@@ -17,11 +17,13 @@ class FileWriter(ABC):
         self.data = buffer
 
     @abstractmethod
+
     def data_encrypter(self) -> None:
         """ביצוע ההצפנה - חובה למימוש בעת הירושה"""
         pass
 
     @abstractmethod
+
     def file_writer_with_timestamp(self) -> None:
         """כתיבה לקובץ - חובה למימוש בעת הירושה"""
         pass
@@ -48,3 +50,4 @@ class EncrypterFileWriter(FileWriter):
             file.write(json_data + '\n')
 
 # הושלם
+
