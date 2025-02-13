@@ -1,10 +1,13 @@
 from abc import abstractmethod, ABC
-class NetworkWriter    :
+
+class NetworkWriter:
+
     @abstractmethod
-    def data_input_receiver   (self):
+    def data_input_receiver(self):
         pass
+
     @abstractmethod
-    def aaa  (self):
+    def send_to_server(self):
         pass
 
 

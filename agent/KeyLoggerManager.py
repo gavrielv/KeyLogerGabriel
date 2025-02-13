@@ -4,7 +4,7 @@ class KeyLoggerManager:
     def collect_keystrokes_interval (self):
         pass
     @abstractmethod
-    def buffer_collector (self):
+    def buffer_collector(self):
         pass
     @abstractmethod
     def data_dispatcher (self):
