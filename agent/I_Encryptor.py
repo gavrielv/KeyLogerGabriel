@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 
 
 class Encryptor(ABC):
-    """תבנית להצפנת נתונים"""
+    """תבנית למחלקה המצפינה נתונים"""
 
     def __init__(self, data, key: str | int):
         """מקבל נתונים ומפתח להצפנה"""
@@ -18,3 +18,5 @@ class Encryptor(ABC):
     def decrypt(self):
         """פענוח הנתונים"""
         pass
+
+# הושלם

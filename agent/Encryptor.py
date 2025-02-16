@@ -2,7 +2,7 @@ from I_Encryptor import Encryptor
 
 
 class XorEncryptor(Encryptor):
-    """הצפנה בשיטת XOR על פי המפתח שהוזן"""
+    """הצפנה בשיטת {XOR} על פי המפתח שהוזן"""
 
     def encrypt(self) -> str:
         """הצפנת הנתונים"""
@@ -18,3 +18,5 @@ class XorEncryptor(Encryptor):
     def decrypt(self) -> str:
         """פענוח הנתונים"""
         return self.encrypt()
+
+# הושלם
