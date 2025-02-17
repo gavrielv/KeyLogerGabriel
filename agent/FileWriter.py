@@ -1,16 +1,16 @@
-from I_Writer import FileWriter
+from I_Writer import Writer
 from datetime import datetime
 import json
 
 
-class FileWriterWithTime(FileWriter):
+class FileWriterWithTime(Writer):
     """
-    כתיבת הנתונים לקובץ {ברירת מחדל - Key Logger.txt}
-    בפןרמט {json}, תוך הוספת תאריך ושעה לכל כתיבה,
+    כתיבת הנתונים לקובץ בפןרמט {json},
+     תוך הוספת תאריך ושעה לכל כתיבה,
     הנתונים צריכים להיות מסוג {str}
     """
 
-    def file_writer(self, file_name = "Key Logger.txt") -> None:
+    def send_data(self, file_name: str) -> None:
         """כתיבה לקובץ בפורמט {json} בתוספת זמן"""
         if (self.data is None) or (not isinstance(self.data, str)):
             raise ValueError('The data was not received or is not of type string.')

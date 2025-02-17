@@ -7,7 +7,7 @@ class Encryptor(ABC):
     def __init__(self, data, key: str | int):
         """מקבל נתונים ומפתח להצפנה"""
         self.data = data
-        self.key = key % 256 if isinstance(key, int) else key
+        self.key = key
 
     @abstractmethod
     def encrypt(self):

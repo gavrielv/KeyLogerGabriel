@@ -19,7 +19,7 @@ class KeyLoggerService:
         self.keys = []
         return requested_keys
 # מתחיל ללכוד את המקשים
->>>>>>> dermer-1
+
 
 # start_logging()
 # stop_logging()

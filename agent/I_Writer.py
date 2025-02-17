@@ -1,9 +1,9 @@
 from abc import abstractmethod, ABC
 
 
-class FileWriter(ABC):
+class Writer(ABC):
     """
-    תבנית למחלקה המיועדת לכתיבה לקובץ
+    תבנית למחלקה המיועדת לכתיבת/שליחת נתונים
     בוריאציות שונות, לפי המימוש
     """
 
@@ -16,8 +16,8 @@ class FileWriter(ABC):
         self.data = data
 
     @abstractmethod
-    def file_writer(self, file_name: str) -> None:
-        """כתיבה לקובץ"""
+    def send_data(self, machine_name: str) -> None:
+        """כתיבת/שליחת הנתונים"""
         pass
 
 # הושלם
