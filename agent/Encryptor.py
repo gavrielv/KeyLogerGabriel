@@ -17,11 +17,16 @@ class XorEncryptor(Encryptor):
         """הצפנת הנתונים"""
         result = []
         if isinstance(self.key, int): # המפתח הינו מספר
-            for char in self.data:
-                result.append(chr(ord(char ^ self.key)))
+            for item  in self.data:
+                result +=[chr(ord(i) ^ self.key) for i in item ]
         else: # המפתח הינו מחרוזת
-            for i in range(len(self.data)):
-                result.append(chr(ord(self.data[i]) ^ ord(self.key[i % len(self.key)])))
+            keylen = len(self.key)
+            i = 0
+            for item  in self.data:
+                for j in item:
+                    i %= keylen
+                    result.append(chr(ord(j) ^ ord(self.key[i])))
+                    i += 1
         return "".join(result)
 
     def decrypt(self) -> str:

