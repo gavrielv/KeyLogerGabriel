@@ -20,13 +20,13 @@ class XorEncryptor(Encryptor):
             for item  in self.data:
                 result +=[chr(ord(i) ^ self.key) for i in item ]
         else: # המפתח הינו מחרוזת
-            keylen = len(self.key)
-            i = 0
+            key_len = len(self.key)
+            key_index = 0
             for item  in self.data:
-                for j in item:
-                    i %= keylen
-                    result.append(chr(ord(j) ^ ord(self.key[i])))
-                    i += 1
+                for char in item:
+                    key_index %= key_len
+                    result.append(chr(ord(char) ^ ord(self.key[key_index])))
+                    key_index += 1
         return "".join(result)
 
     def decrypt(self) -> str:
