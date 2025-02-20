@@ -1,0 +1,27 @@
+.container {
+    display: flex; /* הפיכת האלמנט למיכל Flexbox */
+    flex-direction: row; /* האלמנטים יסתדרו בשורה אופקית */
+    align-items: center; /* מיושר אנכית לאמצע */
+    justify-content: center; /* מיושר אופקית לאמצע */
+    gap: 10px; /* ריווח אחיד בין האלמנטים */
+    flex-wrap: wrap; /* כאשר האלמנטים יתפרסמו על פני יותר מדי שורות - יתפרסמו גם בצדדים */
+
+}
+
+
+.my-button {
+    background-color: lightblue; /* צבע רקע כחול בהיר */
+    margin: 5px; /* מרווח בין הכפתורים */
+    padding: 10px; /* ריווח פנימי (גדול יותר = כפתור גדול יותר) */
+    border-radius: 5px; /* עיגול פינות */
+    border: none; /* אין מסגרת */
+    cursor: pointer; /* העכבר משתנה ליד כאשר מרחפים */
+    width: 20%; /* רוחב יחסי של 20% מהקונטיינר */
+    min-width: 100px; /* רוחב מינימלי לכפתור */
+    text-align: center; /* יישור הטקסט */
+
+}
+
+.my-button:hover {
+    background-color: deepskyblue; /* כאשר העכבר מעל הכפתור - הצבע משתנה */
+}

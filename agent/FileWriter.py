@@ -1,53 +1,26 @@
-from abc import abstractmethod, ABC
+from I_Writer import Writer
+from datetime import datetime
 import json
 
 
-class FileWriter(ABC):
+class FileWriterWithTime(Writer):
     """
-    מחלקה הניתנת למימוש באמצעות ירושה,
-    מיועדת להצפנת נתונים והעלתם לקובץ,
-    בהתאם למימוש המחלקה היורשת
-    """
-
-    def __init__(self, data: dict = None):
-        self.data = data if data is not None else {}
-
-    def data_receiver(self, buffer: dict) -> None:
-        """קבלת מילון עם הנתונים"""
-        self.data = buffer
-
-    @abstractmethod
-
-    def data_encrypter(self) -> None:
-        """ביצוע ההצפנה - חובה למימוש בעת הירושה"""
-        pass
-
-    @abstractmethod
-
-    def file_writer_with_timestamp(self) -> None:
-        """כתיבה לקובץ - חובה למימוש בעת הירושה"""
-        pass
-
-
-class EncrypterFileWriter(FileWriter):
-    """
-    מחלקה המממשת הצפנה בשיטת {encrypter}
-    ומעלה את התוכן לקובץ {Key_Logger.txt}
+    כתיבת הנתונים לקובץ בפןרמט {json},
+     תוך הוספת תאריך ושעה לכל כתיבה,
+    הנתונים צריכים להיות מסוג {str}
     """
 
-    def data_encrypter(self) -> None:
-        """מימוש ההצפנה על בסיס הגדלת כל תו בשלוש ספרות"""
-        for datetime, sentence in self.data.items():
-            encrypter_result = ""
-            for char in sentence:
-                encrypter_result += chr(ord(char) + 3)
-            self.data[datetime] = encrypter_result
-
-    def file_writer_with_timestamp(self) -> None:
-        """מימוש כתיבה לקובץ בפורמט json"""
-        json_data = json.dumps(self.data, ensure_ascii=False)
-        with open('Key_Logger.txt', 'a', encoding='utf-8') as file:
-            file.write(json_data + '\n')
+    def send_data(self, file_name: str) -> None:
+        """כתיבה לקובץ בפורמט {json} בתוספת זמן"""
+        if (self.data is None) or (not isinstance(self.data, str)):
+            raise ValueError('The data was not received or is not of type string.')
+        current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        data_with_time = {current_time: self.data}
+        json_data = json.dumps(data_with_time, ensure_ascii=False)
+        try:
+            with open(file_name, 'a', encoding='utf-8') as file:
+                file.write(json_data + '\n')
+        except Exception as e:
+            print(f'error: {e}')
 
 # הושלם
-
