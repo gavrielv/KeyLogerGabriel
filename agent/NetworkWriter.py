@@ -1,6 +1,6 @@
 from abc import abstractmethod, ABC
 
-class NetworkWriter:
+class NetworkWriter(ABC):
 
     @abstractmethod
     def data_input_receiver(self):
