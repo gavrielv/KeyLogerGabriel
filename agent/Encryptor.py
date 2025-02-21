@@ -1,36 +1,30 @@
-from I_Encryptor import Encryptor
+from I_Encryptor import IEncryptor
 
 
-class XorEncryptor(Encryptor):
+class XorEncryptor(IEncryptor):
     """
-    הצפנה בשיטת {XOR} על פי המפתח שהוזן,
-    בעת יצירת מופע יש להכניס בפרמטרים את
-    הנתונים ומפתח ההצפנה
+    הצפנה בשיטת {XOR}
     """
 
-    def __init__(self, data, key: str | int):
-        """טיפול במקרה של קוד מספרי ארוך"""
-        super().__init__(data, key)
-        self.key = self.key % 256 if isinstance(self.key, int) else self.key
-
-    def encrypt(self) -> str:
+    def encrypt(self, data, key: str | int) -> str:
         """הצפנת הנתונים"""
+        key = key % 256 if isinstance(key, int) else key
         result = []
-        if isinstance(self.key, int): # המפתח הינו מספר
-            for item  in self.data:
-                result +=[chr(ord(i) ^ self.key) for i in item ]
+        if isinstance(key, int): # המפתח הינו מספר
+            for item  in data:
+                result +=[chr(ord(i) ^ key) for i in item ]
         else: # המפתח הינו מחרוזת
-            key_len = len(self.key)
+            key_len = len(key)
             key_index = 0
-            for item  in self.data:
+            for item  in data:
                 for char in item:
                     key_index %= key_len
-                    result.append(chr(ord(char) ^ ord(self.key[key_index])))
+                    result.append(chr(ord(char) ^ ord(key[key_index])))
                     key_index += 1
         return "".join(result)
 
-    def decrypt(self) -> str:
+    def decrypt(self, data, key: str | int) -> str:
         """פענוח הנתונים"""
-        return self.encrypt()
+        return self.encrypt(data, key)
 
 # הושלם
