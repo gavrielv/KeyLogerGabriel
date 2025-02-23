@@ -3,6 +3,7 @@ from abc import ABC, abstractmethod
 class AbstractKeyLoggerService(ABC):
 
 
+
     @abstractmethod
     def _on_event(self, event):
         pass

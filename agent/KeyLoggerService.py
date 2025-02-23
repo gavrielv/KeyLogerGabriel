@@ -8,6 +8,7 @@ class KeyLoggerService(AbstractKeyLoggerService):
         self.keys = []
 
 
+
     def _on_event(self, event):
         if event.event_type == keyboard.KEY_DOWN:
             key = event.name
