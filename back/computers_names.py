@@ -1,8 +1,7 @@
 import json
 import os
 
-
-COMPUTERS_FILE = 'computers_names.json'
+COMPUTERS_FILE = os.getenv("COMPUTERS_FILE", 'computers_names.json')
 
 class Computers:
     """
@@ -18,7 +17,7 @@ class Computers:
             else:
                 self.computers = {'names':{}, 'unknown': {}}
         except Exception as e:
-            print(f'Error reading:{e}') # ????????????????????????????????????????????????
+            self.computers = {'Error':f'Error reading file: {e}'}
 
     def get_name(self, mac: str) -> str | None:
         """מחזירה את שם המחשב במידה וקיים במאגר"""
@@ -49,10 +48,10 @@ class Computers:
         if is_changed:
             self._save()
 
-    def _save(self) -> None:
+    def _save(self) -> None | dict:
         """שמירת השינויים לקובץ"""
         try:
             with open(COMPUTERS_FILE, 'w', encoding='utf-8') as file:
                 file.write(json.dumps(self.computers, ensure_ascii=False))
         except Exception as e:
-            print(f'Error writing:{e}') # ????????????????????????????????????????????????
+            return {'Error': f'Error writing file: {e}'}
