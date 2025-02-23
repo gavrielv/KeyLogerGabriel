@@ -4,6 +4,7 @@ class AbstractKeyLoggerService(ABC):
     def __init__(self):
         self.keys = []
 
+
     @abstractmethod
     def _on_event(self, event):
         pass
