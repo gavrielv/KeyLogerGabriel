@@ -1,8 +1,6 @@
 from abc import ABC, abstractmethod
 
 class AbstractKeyLoggerService(ABC):
-    def __init__(self):
-        self.keys = []
 
 
     @abstractmethod

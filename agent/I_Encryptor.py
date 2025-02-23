@@ -1,21 +1,16 @@
 from abc import ABC, abstractmethod
 
 
-class Encryptor(ABC):
+class IEncryptor(ABC):
     """תבנית למחלקה המצפינה נתונים"""
 
-    def __init__(self, data, key: str | int):
-        """מקבל נתונים ומפתח להצפנה"""
-        self.data = data
-        self.key = key
-
     @abstractmethod
-    def encrypt(self):
+    def encrypt(self, data, key: str | int):
         """הצפנת הנתונים"""
         pass
 
     @abstractmethod
-    def decrypt(self):
+    def decrypt(self, data, key: str | int):
         """פענוח הנתונים"""
         pass
 
