@@ -27,6 +27,40 @@ const displayData = (data) => {
     // יצירת טבלה
     const table = document.createElement('table');
     table.classList.add("data-table");
+    const thead1 = document.createElement('thead');
+    const tr1 = document.createElement('tr');
+
+    const th1 = document.createElement('th');
+    const th2 = document.createElement('th');
+
+    th1.innerText = "Time";
+    th2.innerText = "Keystrokes";
+
+    tr1.appendChild(th1);
+    tr1.appendChild(th2);
+
+    thead1.appendChild(tr1);
+    table.appendChild(thead1);
+
+    // יצירת גוף הטבלה (tbody)
+    const tbody = document.createElement('tbody');
+
+    // הוספת הנתונים לטבלה
+    Object.keys(data).forEach(time => {
+        const tr = document.createElement('tr');
+        const td1 = document.createElement('td');
+        const td2 = document.createElement('td'); 
+
+        td1.innerText = time;
+        td2.innerText = data[time];
+
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+        tbody.appendChild(tr);
+    });
+    table.appendChild(tbody);
+    container.appendChild(table);
+    document.body.appendChild(container);
 
     }
 

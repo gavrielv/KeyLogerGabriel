@@ -71,3 +71,57 @@ body {
 .my-button:active {
     transform: scale(0.95); /* הקטנה רגעית */
 }
+/*  עיצוב כללי לטבלה */
+.data-table {
+    width: 80%; /* רוחב הטבלה */
+    max-width: 800px; /* מגבלת רוחב */
+    border-collapse: collapse; /* איחוד גבולות התאים */
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.3); /* רקע שקוף עם אפקט */
+    border-radius: 10px; /* עיגול פינות */
+    overflow: hidden; /* מניעת חריגה של פינות מעוגלות */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* צל מתחת לטבלה */
+    backdrop-filter: blur(10px); /* טשטוש רקע */
+}
+
+/*  עיצוב כותרות הטבלה */
+.data-table thead {
+    background: rgba(0, 123, 255, 0.8); /* צבע כחול עם שקיפות */
+    color: white;
+    font-size: 18px;
+    text-transform: uppercase; /* כותרות באותיות גדולות */
+}
+
+/*  עיצוב תאים בטבלה */
+.data-table th, .data-table td {
+    padding: 12px; /* ריווח פנימי */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* קו תחתון בהיר */
+    text-align: center; /* טקסט מיושר למרכז */
+}
+
+/*  עיצוב שורות בטבלה */
+.data-table tbody tr {
+    transition: background 0.3s ease; /* הנפשת מעבר צבע */
+}
+
+/*  עיצוב אפקט ריחוף על שורות */
+.data-table tbody tr:hover {
+    background: rgba(0, 123, 255, 0.1); /* צבע רקע בהיר בשורה כאשר העכבר מעל */
+}
+
+/*  עיצוב השורה האחרונה (כדי למנוע קווים מיותרים) */
+.data-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/*  עיצוב כותרות הטבלה */
+.data-table th {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/*  עיצוב לתאי הטקסט */
+.data-table td {
+    font-size: 16px;
+    color: #333; /* צבע טקסט כהה לקריאות */
+}
