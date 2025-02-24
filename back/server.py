@@ -13,6 +13,7 @@ def upload():
     try:
         result = request_handler.upload()
         if 'Error' in result:
+            print(result)
             return jsonify(result), 400
         return jsonify(result), 200
     except Exception as e:
@@ -49,7 +50,7 @@ def get_keystrokes_by_name_and_date(name, date):
             return jsonify(result), 400
         return jsonify(result), 200
     except Exception as e:
-        return jsonify({'Error': str(e)}), 500
+        return jsonify({'Error': e}), 500
 
 
 if __name__ == '__main__':

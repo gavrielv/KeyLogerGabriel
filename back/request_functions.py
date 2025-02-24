@@ -19,10 +19,12 @@ class RequestFunctions:
         try:
             data = request.get_json()
             # בדיקת תקינות הנתונים
-            if (not data) or ('mac' not in data) or ('time' not in data) or ('data' not in data):
+            if not data:
+                return {'Error': 'Invalid JSON format'}
+            if ('mac' not in data) or ('time' not in data) or ('data' not in data):
                 return {'Error': 'Invalid payload'}
             if not isinstance(data['mac'], str) or not isinstance(data['time'], str) or not isinstance(data['data'],
-                                                                                                       dict):
+                                                                                                       str):
                 return {'Error': 'Invalid data format'}
 
             # בדיקה שהזמן בפורמט הנדרש
@@ -33,10 +35,13 @@ class RequestFunctions:
                 return {'Error': 'Invalid time format'}
 
             # בירור שם המשתמש של המחשב
-            machine = computers.get_name(data['mac'])
-            if not machine:
-                computers.add(data['mac'])
+            try:
                 machine = computers.get_name(data['mac'])
+                if not machine:
+                    computers.add(data['mac'])
+                    machine = computers.get_name(data['mac'])
+            except Exception as e:
+                return {'Error': f'Error find computer name {e}'}
 
             # במקרה של שגיאה בהתחלת Computers (אם לא הצליח לאתחל את המידע)
             if 'Error' in computers.computers:
