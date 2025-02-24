@@ -3,18 +3,18 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()
-COMPUTERS_FILE = os.getenv("COMPUTERS_FILE", 'computers_names.json')
 
-class Computers:
+class ComputersNames:
     """
     ניהול וגישה למאגר המחשבים שבמעקב
     """
 
-    def __init__(self):
-        """איתחול המאגר במידע השמור"""
+    def __init__(self, computers_file):
+        """איתחול המאגר במידע השמור + קבלת נתיב לקובץ המאגר"""
+        self.computers_file = computers_file
         try:
-            if os.path.exists(COMPUTERS_FILE):
-                with open(COMPUTERS_FILE, 'r') as file:
+            if os.path.exists(computers_file):
+                with open(computers_file, 'r') as file:
                     self.computers = json.load(file)
             else:
                 self.computers = {'names':{}, 'unknown': {}}
@@ -54,7 +54,7 @@ class Computers:
     def _save(self) -> bool:
         """שמירת השינויים לקובץ"""
         try:
-            with open(COMPUTERS_FILE, 'w', encoding='utf-8') as file:
+            with open(self.computers_file, 'w', encoding='utf-8') as file:
                 file.write(json.dumps(self.computers, ensure_ascii=False))
                 return True
         except Exception as e:
