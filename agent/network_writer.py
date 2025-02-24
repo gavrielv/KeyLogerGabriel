@@ -1,8 +1,5 @@
 import requests
 from datetime import datetime
-
-from fontTools.merge.util import current_time
-
 from I_Writer import IWriter
 
 

