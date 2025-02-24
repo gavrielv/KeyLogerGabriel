@@ -17,7 +17,7 @@ const createButtons = (dates) => {
     // יצירת כפתור לכל מחשב ברשימה
     dates.forEach(date => {
         const button = document.createElement('button');
-        button.innerText = `data for \n ${date}`; // טקסט על הכפתור
+        button.innerText = `data from \n ${date}`; // טקסט על הכפתור
 
         // בעת לחיצה על הכפתור, מעבר לדף עם פרמטר השם
         button.onclick = () => {
