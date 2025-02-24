@@ -1,7 +1,9 @@
 from flask import Flask, jsonify
 from request_functions import RequestFunctions
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 request_handler = RequestFunctions()
 

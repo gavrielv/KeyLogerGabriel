@@ -1,37 +1,65 @@
-const claints = ['avi','ben','david','daniel','eli','guy','gadi','haim','idan','jacob','liran','moran','nir','omer','ron','shay','tal','uri','yosi','ziv'];
+// רשימת הלקוחות
+// const clients = ['avi','ben','david','daniel','eli','guy','gadi','haim','idan','jacob','liran','moran','nir','omer','ron','shay','tal','uri','yosi','ziv'];
 
-const f = (claints) => {
-    console.log('Hello World');
-    const div1 = document.createElement('div');
-    div1.classList.add("container");
-    claints.forEach ( (claint) => {
+
+const url = 'http://127.0.0.1:5000'
+
+
+// פונקציה היוצרת את כפתורי המחשבים ומוסיפה אותם לדף
+const createButtons = (computers) => {
+    // יצירת קונטיינר ראשי לכל הכפתורים
+    const container = document.createElement('div');
+    container.classList.add("container");
+
+    // יצירת כפתור לכל מחשב ברשימה
+    computers.forEach(computer => {
         const button = document.createElement('button');
-        button.innerText = `for ${claint} cleck me`;
-        // מעבר לדף profile.html עם פרמטר של השם
+        button.innerText = `For ${computer} \n click me`; // טקסט על הכפתור
+
+        // בעת לחיצה על הכפתור, מעבר לדף עם פרמטר השם
         button.onclick = () => {
-            window.location.href = `http://127.0.0.1:5000/user?name=${encodeURIComponent(claint)}`;
+            window.location.href = `datesPage.html?name=${encodeURIComponent(computer)}`;
         };
-        button.classList.add("my-button");
-        div1.appendChild(button)
-    })
-    document.body.appendChild(div1);
-}
 
+        button.classList.add("my-button"); // הוספת מחלקה לכפתור
+        container.appendChild(button); // הוספת הכפתור לקונטיינר
+    });
 
-async function fetchfollowingsData() {
+    document.body.appendChild(container); // הוספת הקונטיינר לעמוד
+};
+
+// פונקציה היוצרת את הכותרת וההסבר בראש הדף
+const createHeader = () => {
+    const header = document.createElement('div');
+    header.classList.add("header");
+
+    const title = document.createElement('h1');
+    title.innerText = "Welcome to the Client Portal"; // כותרת ראשית
+
+    const description = document.createElement('p');
+    description.innerText = "Click on a client's button to view their profile."; // הסבר קצר
+
+    header.appendChild(title);
+    header.appendChild(description);
+    document.body.appendChild(header); // הוספת הכותרת לדף
+};
+
+// פונקציה לקבלת נתונים מהשרת
+async function fetchFollowingsData() {
     console.log("Fetching data..."); // הדפסת הודעה לקונסול
+    console.log(`${url}/api/get_machines_names`);
     try {
-        const response = await fetch("http://127.0.0.1:5000/items"); // קריאה לשרת
-        console.log("Response:", response); // הצגת התגובה בקונסול
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`); // בדיקת שגיאות
-        }
+        const response = await fetch(`${url}/api/get_machines_names`); // בקשה לשרת
+        console.log(response);
+        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
         const followings = await response.json(); // המרת התגובה לאובייקט JSON
-        console.log("Data:",followings ); // הצגת הנתונים בקונסול
-        f(followings); // קריאה לפונקציה שתציג את הנתונים בדף
+        console.log(followings);
+        createButtons(followings.machines); // יצירת כפתורים עם הנתונים שהתקבלו
     } catch (error) {
         console.error("Error fetching data:", error);
     }
 }
-console.log("dfsdgfgdfsdasdadfgdh")
-fetchfollowingsData();
+
+// יצירת כותרת והסבר לפני טעינת הכפתורים
+createHeader();
+fetchFollowingsData(); // קריאה לפונקציה שמביאה את הנתונים מהשרת

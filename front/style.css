@@ -1,0 +1,73 @@
+/* סגנון כללי לגוף הדף */
+body {
+    font-family: Arial, sans-serif; /* שימוש בפונט קריא */
+    background: linear-gradient(to right, #74ebd5, #acb6e5); /* רקע עם גרדיאנט מודרני */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* מיקום התוכן באמצע הדף */
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    text-align: center; /* טקסט מיושר למרכז */
+}
+
+/* עיצוב קונטיינר הכותרת וההסבר */
+.header {
+    margin-bottom: 20px; /* ריווח מתחת לכותרת */
+    color: white; /* צבע טקסט */
+}
+
+/* עיצוב הכותרת הראשית */
+.header h1 {
+    font-size: 3em; /* גודל גופן גדול */
+    margin: 0; /* ללא שוליים חיצוניים */
+}
+
+/* עיצוב הפסקה שמתחת לכותרת */
+.header p {
+    font-size: 1.5em; /* גודל טקסט קריא */
+    margin-top: 5px; /* מרווח קל מעל הפסקה */
+}
+
+/* קונטיינר שמכיל את הכפתורים */
+.container {
+    display: flex;
+    flex-wrap: wrap; /* כאשר המסך קטן - הכפתורים יורדים שורה */
+    gap: 15px; /* ריווח בין הכפתורים */
+    justify-content: center; /* כפתורים במרכז */
+    max-width: 80%; /* הגבלת הרוחב */
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.2); /* רקע שקוף עם אפקט זכוכית */
+    border-radius: 10px; /* פינות מעוגלות */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* הוספת צל */
+    backdrop-filter: blur(10px); /* טשטוש רקע */
+}
+
+/* עיצוב הכפתורים */
+.my-button {
+    background-color: #007BFF; /* צבע רקע כחול */
+    color: white; /* צבע טקסט */
+    border: none; /* אין מסגרת */
+    padding: 12px 20px; /* ריווח פנימי */
+    font-size: 16px; /* גודל טקסט */
+    font-weight: bold; /* טקסט מודגש */
+    border-radius: 8px; /* עיגול פינות */
+    cursor: pointer; /* סמן עכבר משתנה ליד */
+    transition: all 0.3s ease; /* הנפשה חלקה */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* צל לכפתורים */
+    min-width: 150px; /* גודל אחיד לכפתור */
+    max-width: 190px; /* גודל מקסימלי */
+    height: 60px; /* גובה אחיד לכל הכפתורים */
+    text-align: center;
+}
+
+/* אפקט כאשר מרחפים עם העכבר על הכפתור */
+.my-button:hover {
+    background-color: #0056b3; /* צבע כהה יותר */
+    transform: scale(1.05); /* הגדלה קלה */
+}
+
+/* אפקט כאשר הכפתור נלחץ */
+.my-button:active {
+    transform: scale(0.95); /* הקטנה רגעית */
+}
