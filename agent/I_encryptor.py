@@ -8,5 +8,3 @@ class IEncryptor(ABC):
     def encrypt(self, data, key: str | int):
         """הצפנת הנתונים"""
         pass
-
-# הושלם

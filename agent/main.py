@@ -1,6 +1,7 @@
-from os import getenv
 from key_logger_manager import KeyLoggerManager
+from os import getenv
 from dotenv import load_dotenv
+
 
 load_dotenv()
 encryption_key = getenv("encryption_key")

@@ -22,5 +22,3 @@ class FileWriter(IWriter):
                 file.write(json_data + '\n')
         except Exception as e:
             print(f'error: {e}')
-
-# הושלם

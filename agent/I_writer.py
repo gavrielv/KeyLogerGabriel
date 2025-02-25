@@ -11,5 +11,3 @@ class IWriter(ABC):
     def send_data(self, data, machine_name: str) -> None:
         """כתיבת/שליחת הנתונים"""
         pass
-
-# הושלם

@@ -7,6 +7,7 @@ class NetworkWriter(IWriter):
     """שליחת נתונים לשרת"""
 
     def __init__(self, url: str):
+        """קבלת כתובת url"""
         self.url = url
 
     def send_data(self, data, machine_name: str):

