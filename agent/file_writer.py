@@ -3,7 +3,7 @@ from datetime import datetime
 import json
 
 
-class FileWriterWithTime(IWriter):
+class FileWriter(IWriter):
     """
     כתיבת הנתונים לקובץ בפןרמט {json},
      תוך הוספת תאריך ושעה לכל כתיבה,
