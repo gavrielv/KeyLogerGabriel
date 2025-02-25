@@ -2,6 +2,7 @@ server requests: - בקשות שרת
 
     POST requests: - בקשות העלאה
         /api/upload - העלאת מידע מהמחשב שבמעקב
+        /api/login - כניסת משתמש
 
     GET requests: - בקשות הורדה: קבלת נתונים
         /api/get_machines_names - קבלת שמות המחשבים שבמעקב

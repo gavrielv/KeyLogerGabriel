@@ -19,7 +19,7 @@ class ComputersNames:
             else:
                 self.computers = {'names':{}, 'unknown': {}}
         except Exception as e:
-            self.computers = {'Error':f'Error reading file: {e}'}
+            self.computers = {'Error':f'Error reading file: {str(e)}'}
 
     def get_name(self, mac: str) -> str | None:
         """מחזירה את שם המחשב במידה וקיים במאגר"""
@@ -30,16 +30,28 @@ class ComputersNames:
         return None
 
 
-    def add(self, mac_address: str, name: str | None = None) -> bool:
+    def add(self, mac_address: str, name: str | None = None) -> dict:
         """הוספת מחשב חדש למאגר, מחזירה האם השמירה לקובץ הצליחה"""
+        if mac_address in self.computers['names'] or mac_address in self.computers['unknown']:
+            return {False: 'Already in data (use update to change)'}
         if name:
             self.computers['names'][mac_address] = name
         else:
             self.computers['unknown'][mac_address] = max(self.computers['unknown'].values(), default=0) + 1
         return self._save()
 
-    def delete(self, mac_address: str) -> bool:
-        """מחיקת מחשב מהמאגר, מחזירה האם השמירה לקובץ הצליחה"""
+    def update(self, mac_address: str, name: str) -> dict:
+        """עדכון שם לכתובת mac קיימת"""
+        if mac_address in self.computers['names']:
+            self.computers['names'][mac_address] = name
+            return {'Status': 'Successful update'}
+        elif mac_address in self.computers['unknown']:
+            self.computers['unknown'][mac_address] = name
+            return {}
+        return {'Error': 'Not find error'}
+
+    def delete(self, mac_address: str) -> dict:
+        """מחיקת מחשב מהמאגר, מחזירה סטטוס המחיקה"""
         is_changed = False
         if mac_address in self.computers['names']:
             del self.computers['names'][mac_address]
@@ -49,13 +61,13 @@ class ComputersNames:
             is_changed = True
         if is_changed:
             return self._save()
+        return {False: "not find"}
 
-    # TODO fix except
-    def _save(self) -> bool:
-        """שמירת השינויים לקובץ"""
+    def _save(self) -> dict:
+        """שמירת השינויים לקובץ, מחזירה סטטוס השמירה"""
         try:
             with open(self.computers_file, 'w', encoding='utf-8') as file:
                 file.write(json.dumps(self.computers, ensure_ascii=False))
-                return True
+                return {'Status': "Saving successfully"}
         except Exception as e:
-            return False
+            return {'Error': f'Error reading file: {str(e)}'}
