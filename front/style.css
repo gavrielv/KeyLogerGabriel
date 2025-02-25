@@ -1,127 +1,237 @@
 /* סגנון כללי לגוף הדף */
 body {
-    font-family: Arial, sans-serif; /* שימוש בפונט קריא */
-    background: linear-gradient(to right, #74ebd5, #acb6e5); /* רקע עם גרדיאנט מודרני */
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #74ebd5, #acb6e5);
     display: flex;
     flex-direction: column;
-    align-items: center; /* מיקום התוכן באמצע הדף */
+    align-items: center;
     justify-content: center;
     height: 100vh;
     margin: 0;
-    text-align: center; /* טקסט מיושר למרכז */
+    text-align: center;
 }
 
 /* עיצוב קונטיינר הכותרת וההסבר */
 .header {
-    margin-bottom: 20px; /* ריווח מתחת לכותרת */
-    color: white; /* צבע טקסט */
+    margin-bottom: 20px;
+    color: white;
 }
 
 /* עיצוב הכותרת הראשית */
 .header h1 {
-    font-size: 3em; /* גודל גופן גדול */
-    margin: 0; /* ללא שוליים חיצוניים */
+    font-size: 3em;
+    margin: 0;
 }
 
 /* עיצוב הפסקה שמתחת לכותרת */
 .header p {
-    font-size: 1.5em; /* גודל טקסט קריא */
-    margin-top: 5px; /* מרווח קל מעל הפסקה */
+    font-size: 1.5em;
+    margin-top: 5px;
 }
 
 /* קונטיינר שמכיל את הכפתורים */
 .container {
     display: flex;
-    flex-wrap: wrap; /* כאשר המסך קטן - הכפתורים יורדים שורה */
-    gap: 15px; /* ריווח בין הכפתורים */
-    justify-content: center; /* כפתורים במרכז */
-    max-width: 80%; /* הגבלת הרוחב */
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    /* max-width: 80%; */
+    min-width: 70%;
+    min-height: 60%;
     padding: 20px;
-    background: rgba(255, 255, 255, 0.2); /* רקע שקוף עם אפקט זכוכית */
-    border-radius: 10px; /* פינות מעוגלות */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* הוספת צל */
-    backdrop-filter: blur(10px); /* טשטוש רקע */
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
 }
 
-/* עיצוב הכפתורים */
-.my-button {
-    background-color: #007BFF; /* צבע רקע כחול */
-    color: white; /* צבע טקסט */
-    border: none; /* אין מסגרת */
-    padding: 12px 20px; /* ריווח פנימי */
-    font-size: 16px; /* גודל טקסט */
-    font-weight: bold; /* טקסט מודגש */
-    border-radius: 8px; /* עיגול פינות */
-    cursor: pointer; /* סמן עכבר משתנה ליד */
-    transition: all 0.3s ease; /* הנפשה חלקה */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* צל לכפתורים */
-    min-width: 150px; /* גודל אחיד לכפתור */
-    max-width: 190px; /* גודל מקסימלי */
-    height: 60px; /* גובה אחיד לכל הכפתורים */
+/* עיצוב טבלת נתונים */
+.data-table {
+    width: 100%;
+    /* max-width: 800px; */
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.data-table thead {
+    background: rgba(0, 123, 255, 0.8);
+    color: white;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+.data-table th, .data-table td {
+    padding: 12px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
-/* אפקט כאשר מרחפים עם העכבר על הכפתור */
-.my-button:hover {
-    background-color: #0056b3; /* צבע כהה יותר */
-    transform: scale(1.05); /* הגדלה קלה */
-}
-
-/* אפקט כאשר הכפתור נלחץ */
-.my-button:active {
-    transform: scale(0.95); /* הקטנה רגעית */
-}
-/*  עיצוב כללי לטבלה */
-.data-table {
-    width: 80%; /* רוחב הטבלה */
-    max-width: 800px; /* מגבלת רוחב */
-    border-collapse: collapse; /* איחוד גבולות התאים */
-    margin-top: 20px;
-    background: rgba(255, 255, 255, 0.3); /* רקע שקוף עם אפקט */
-    border-radius: 10px; /* עיגול פינות */
-    overflow: hidden; /* מניעת חריגה של פינות מעוגלות */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* צל מתחת לטבלה */
-    backdrop-filter: blur(10px); /* טשטוש רקע */
-}
-
-/*  עיצוב כותרות הטבלה */
-.data-table thead {
-    background: rgba(0, 123, 255, 0.8); /* צבע כחול עם שקיפות */
-    color: white;
-    font-size: 18px;
-    text-transform: uppercase; /* כותרות באותיות גדולות */
-}
-
-/*  עיצוב תאים בטבלה */
-.data-table th, .data-table td {
-    padding: 12px; /* ריווח פנימי */
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* קו תחתון בהיר */
-    text-align: center; /* טקסט מיושר למרכז */
-}
-
-/*  עיצוב שורות בטבלה */
 .data-table tbody tr {
-    transition: background 0.3s ease; /* הנפשת מעבר צבע */
+    transition: background 0.3s ease;
 }
 
-/*  עיצוב אפקט ריחוף על שורות */
 .data-table tbody tr:hover {
-    background: rgba(0, 123, 255, 0.1); /* צבע רקע בהיר בשורה כאשר העכבר מעל */
+    background: rgba(0, 123, 255, 0.1);
 }
 
-/*  עיצוב השורה האחרונה (כדי למנוע קווים מיותרים) */
 .data-table tbody tr:last-child td {
     border-bottom: none;
 }
 
-/*  עיצוב כותרות הטבלה */
-.data-table th {
+/* עיצוב הכפתורים */
+.my-button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
     font-weight: bold;
-    text-transform: uppercase;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    min-width: 150px;
+    max-width: 190px;
+    height: 60px;
+    text-align: center;
 }
 
-/*  עיצוב לתאי הטקסט */
-.data-table td {
-    font-size: 16px;
-    color: #333; /* צבע טקסט כהה לקריאות */
+.my-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
 }
+
+.my-button:active {
+    transform: scale(0.95);
+}
+
+/* עיצוב טופס ההתחברות */
+.login-container {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 400px;
+    width: 90%;
+    margin-top: 20px;
+}
+
+/* עיצוב שדות טופס ההתחברות */
+.login-form input {
+    width: 90%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* עיצוב שדה הסיסמה עם כפתור הצגת הסיסמה */
+.password-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 8px;
+    padding: 0;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.password-container input {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 8px;
+    outline: none;
+}
+
+.password-container button {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s ease;
+    padding: 5px;
+}
+
+.password-container button:hover {
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* עיצוב כפתור הלוגין */
+.login-form button {
+    width: 100%;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.login-form button:hover {
+    background-color: #0056b3;
+}
+
+.login-form button:active {
+    transform: scale(0.95);
+}
+/* 🎨 שדה הסיסמה */
+#password {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 10px;
+    flex: 1;
+    height: 100%;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+/* 🎨 כפתור הצגת סיסמה */
+#seePassword {
+    background: none; /* מסיר רקע */
+    border: none; /* מסיר מסגרת */
+    box-shadow: none; /* מסיר כל צל */
+    outline: none; /* מסיר מסגרת הדגשה כשנלחץ */
+    cursor: pointer; /* משנה את הסמן ליד מצביע */
+    font-size: 18px; /* גודל אייקון */
+    color: rgba(255, 255, 255, 0.7); /* צבע לבן עם שקיפות כדי שלא יבלוט מדי */
+    user-select: none; /* מונע סימון */
+    display: flex; /* סידור כ-Flexbox */
+    align-items: center; /* ממרכז את האייקון אנכית */
+    justify-content: center; /* ממרכז את האייקון אופקית */
+    height: 100%; /* גובה בהתאם לשדה הקלט */
+    right: 0; /* מציין את המרחק מהצד הימני */
+    position: absolute; /* מאפשר מיקום מדויק */
+    width: 20px; /* גודל קטן רק כדי להכיל אייקון */
+}
+
+/* שינוי צבע האייקון כאשר מעבירים מעליו את העכבר */
+#seePassword:hover {
+    color: black; /* צבע האייקון משתנה לשחור */
+}
+
