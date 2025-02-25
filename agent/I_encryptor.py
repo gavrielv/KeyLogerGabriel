@@ -9,9 +9,4 @@ class IEncryptor(ABC):
         """הצפנת הנתונים"""
         pass
 
-    @abstractmethod
-    def decrypt(self, data, key: str | int):
-        """פענוח הנתונים"""
-        pass
-
 # הושלם

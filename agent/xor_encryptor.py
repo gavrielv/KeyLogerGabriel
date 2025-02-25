@@ -1,4 +1,4 @@
-from I_Encryptor import IEncryptor
+from I_encryptor import IEncryptor
 
 
 class XorEncryptor(IEncryptor):
@@ -22,17 +22,5 @@ class XorEncryptor(IEncryptor):
                     result.append(chr(ord(char) ^ ord(key[key_index])))
                     key_index += 1
         return "".join(result)
-
-    def decrypt(self, data: str, key: str | int) -> str:
-        """פענוח הנתונים"""
-        key = key % 256 if isinstance(key, int) else key
-        result = ""
-        if isinstance(key, int): # המפתח הינו מספר
-            for char in data:
-                result +=chr(ord(char) ^ key)
-        else: # המפתח הינו מחרוזת
-            for i in range(len(data)):
-                result += chr(ord(data[i]) ^ ord(key[i % len(key)]))
-        return result
 
 # הושלם

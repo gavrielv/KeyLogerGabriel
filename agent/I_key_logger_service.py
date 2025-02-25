@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-class AbstractKeyLoggerService(ABC):
+class IKeyLoggerService(ABC):
     """ ממשק למחלקת הקלטת מקשים """
 
     """" פונקציה פרטית שתפעל בהקשה על מקש """

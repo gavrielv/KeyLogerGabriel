@@ -1,6 +1,6 @@
 import requests
 from datetime import datetime
-from I_Writer import IWriter
+from I_writer import IWriter
 
 
 class NetworkWriter(IWriter):
