@@ -20,17 +20,14 @@ class UsersData:
         """מחזירה אם שם המשתמש והסיסמה קיימים ותואמים"""
         return self.users.get(user) == password
 
-    def add(self, user, password) -> bool:
+    def add(self, user, password):
         """הוספת מחשב חדש למאגר, מחזירה האם השמירה לקובץ הצליחה"""
         pass
-        return self._save()
 
-    def delete(self, user, password) -> bool:
+    def delete(self, user, password):
         """מחיקת מחשב מהמאגר, מחזירה האם השמירה לקובץ הצליחה"""
         is_changed = False
         pass
-        if is_changed:
-            return self._save()
 
     # TODO fix except
     def _save(self) -> bool:
@@ -41,6 +38,3 @@ class UsersData:
                 return True
         except Exception as e:
             return False
-
-
-
