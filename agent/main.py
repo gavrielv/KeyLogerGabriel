@@ -1,5 +1,5 @@
 from os import getenv
-from Manager import KeyLoggerManager
+from key_logger_manager import KeyLoggerManager
 from dotenv import load_dotenv
 
 load_dotenv()

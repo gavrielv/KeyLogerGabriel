@@ -1,4 +1,4 @@
-from I_Encryptor import IEncryptor
+from I_encryptor import IEncryptor
 
 
 class XorEncryptor(IEncryptor):

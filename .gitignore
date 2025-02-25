@@ -1,4 +1,6 @@
 __pycache__/
 venv/
-agent/.env
-back/.env
+.idea/
+.env
+.DS_Store
+

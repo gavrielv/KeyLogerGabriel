@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-class AbstractKeyLoggerService(ABC):
+class KeyLoggerService(ABC):
 
 
 
