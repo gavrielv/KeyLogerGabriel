@@ -22,5 +22,3 @@ class XorEncryptor(IEncryptor):
                     result.append(chr(ord(char) ^ ord(key[key_index])))
                     key_index += 1
         return "".join(result)
-
-# הושלם

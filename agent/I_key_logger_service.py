@@ -1,8 +1,7 @@
 from abc import ABC, abstractmethod
 
+
 class IKeyLoggerService(ABC):
-
-
 
     @abstractmethod
     def _on_event(self, event):
