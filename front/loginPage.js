@@ -1,16 +1,16 @@
-const url = 'http://localhost:5000';
+const url = 'http://127.0.0.1:5000';
 
 // פונקציה שמבצעת התחברות
-const login = (event) => {
+const handleLogin = (event) => {
     event.preventDefault(); // מונע מהטופס לרענן את הדף
 
     // קבלת פרטי המשתמש מהטופס
-    const username = document.getElementById("username").value.trim();
+    const user_name = document.getElementById("username").value.trim();
     const password = document.getElementById("password").value.trim();
     const errorMessage = document.getElementById("error-message");
 
     // בדיקה אם השדות ריקים
-    if (!username || !password) {
+    if (!user_name || !password) {
         errorMessage.innerText = "Username and password cannot be empty!";
         errorMessage.style.color = "red";
         return;
@@ -18,10 +18,10 @@ const login = (event) => {
 
     // יצירת אובייקט עם פרטי המשתמש
     const data = {
-        username: username,
+        user_name: user_name,
         password: password
     };
-
+    console.log(data);
     // שליחת הפרטים לשרת
     fetch(`${url}/api/login`, {
         method: 'POST',
@@ -119,7 +119,7 @@ const loginWindow = () => {
     document.body.appendChild(login);
 
     // הוספת מאזין אירוע לטופס כדי למנוע רענון דף
-    form.addEventListener("submit", login);
+    form.addEventListener("submit", handleLogin);
 };
 
 // יצירת חלון הלוגין
