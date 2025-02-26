@@ -5,11 +5,20 @@
 const url = 'http://127.0.0.1:5000'
 
 
-// פונקציה היוצרת את כפתורי המחשבים ומוסיפה אותם לדף
+// פונקציה היוצרת את הכפתורים ומוסיפה אותם לדף
 const createButtons = (computers) => {
     // יצירת קונטיינר ראשי לכל הכפתורים
     const container = document.createElement('div');
     container.classList.add("container");
+
+    // יצירת כפתור לדף השגיאות
+    const errorButton = document.createElement('button');
+    errorButton.innerText = "Errors Page"; // טקסט על הכפתור
+    errorButton.onclick = () => {
+        window.location.href = "erorrsPage.html"; // מעבר לדף השגיאות
+    };
+    errorButton.classList.add("my-button"); // הוספת מחלקה לכפתור
+    container.appendChild(errorButton); // הוספת הכפתור לקונטיינר
 
     // יצירת כפתור לכל מחשב ברשימה
     computers.forEach(computer => {

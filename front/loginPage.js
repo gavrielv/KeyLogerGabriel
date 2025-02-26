@@ -43,7 +43,7 @@ const handleLogin = (event) => {
     });
 };
 const togglePasswordVisibility = () => {
-    event.preventDefault()
+    event.preventDefault(); // מונע מהטופס לרענן את הדף
 
     const passwordInput = document.getElementById("password");
     const togglePassword = document.getElementById("seePassword");
