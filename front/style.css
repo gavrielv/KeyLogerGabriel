@@ -1,7 +1,10 @@
 /* סגנון כללי לגוף הדף */
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to right, #74ebd5, #acb6e5);
+    font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    background: #292929;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -13,8 +16,8 @@ body {
 
 /* עיצוב קונטיינר הכותרת וההסבר */
 .header {
-    margin-bottom: 20px;
-    color: white;
+    margin-bottom: 30px;
+    color: #40e0d0;
 }
 
 /* עיצוב הכותרת הראשית */
@@ -88,7 +91,7 @@ body {
 
 /* עיצוב הכפתורים */
 .my-button {
-    background-color: #007BFF;
+    background-color: #31b6a8;
     color: white;
     border: none;
     padding: 12px 20px;
@@ -103,13 +106,16 @@ body {
     height: 60px;
     text-align: center;
 }
-
+/* משנה צבע בריחוף */
 .my-button:hover {
-    background-color: #0056b3;
+    color: #FFFFFF; /* מחליף צבע כתב */
+    background-color: #008080;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     transform: scale(1.05);
 }
 
 .my-button:active {
+    background-color: #00000;
     transform: scale(0.95);
 }
 
