@@ -43,6 +43,8 @@ const handleLogin = (event) => {
     });
 };
 const togglePasswordVisibility = () => {
+    event.preventDefault()
+
     const passwordInput = document.getElementById("password");
     const togglePassword = document.getElementById("seePassword");
 

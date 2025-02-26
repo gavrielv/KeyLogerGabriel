@@ -6,7 +6,8 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url("imegs/img.png") no-repeat center center/cover;
+    background: url('imegs/gif-3.gif') no-repeat center center fixed;
+    background-size: cover;
     opacity: 0.7;
     z-index: -1;
 }
