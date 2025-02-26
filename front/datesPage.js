@@ -17,7 +17,7 @@ const createButtons = (dates) => {
     // יצירת כפתור לכל מחשב ברשימה
     dates.forEach(date => {
         const button = document.createElement('button');
-        button.innerText = `data from \n ${date}`; // טקסט על הכפתור
+        button.innerText = `${date}`; // טקסט על הכפתור
 
         // בעת לחיצה על הכפתור, מעבר לדף עם פרמטר השם
         button.onclick = () => {
@@ -30,6 +30,20 @@ const createButtons = (dates) => {
 
     document.body.appendChild(container); // הוספת הקונטיינר לעמוד
 };
+
+// פונקציה היוצרת את הכותרת וההסבר בראש הדף
+const createHeader = () => {
+    const header = document.createElement('div');
+    header.classList.add("header");
+
+    const title = document.createElement('h1');
+    title.innerText = "Recorded dates"; // כותרת ראשית
+
+    header.appendChild(title);
+    document.body.appendChild(header); // הוספת הכותרת לדף
+};
+
+createHeader()
 
 // שליפת השם מה-URL
 const name1 = getQueryParam("name");
@@ -53,3 +67,4 @@ if (name1) {
 } else {    
     document.body.innerHTML = `<h1>No user selected</h1>`;
 }
+

@@ -2,6 +2,11 @@
 
 const url = 'http://127.0.0.1:5000'
 
+    const DevicesList = document.createElement('div');
+    DevicesList.classList.add("DevicesList");
+    const device = document.createElement('h2');
+    device.innerText = "Devices";
+    DevicesList.appendChild(device);
 
 // פונקציה היוצרת את הכפתורים ומוסיפה אותם לדף
 const createButtons = (computers) => {
@@ -9,19 +14,14 @@ const createButtons = (computers) => {
     const container = document.createElement('div');
     container.classList.add("container");
 
-    // יצירת כפתור לדף השגיאות
-    const errorButton = document.createElement('button');
-    errorButton.innerText = "Errors Page"; // טקסט על הכפתור
-    errorButton.onclick = () => {
-        window.location.href = "erorrsPage.html"; // מעבר לדף השגיאות
-    };
-    errorButton.classList.add("my-button"); // הוספת מחלקה לכפתור
-    container.appendChild(errorButton); // הוספת הכפתור לקונטיינר
+
+
+
 
     // יצירת כפתור לכל מחשב ברשימה
     computers.forEach(computer => {
         const button = document.createElement('button');
-        button.innerText = `For ${computer} \n click me`; // טקסט על הכפתור
+        button.innerText = `${computer}`; // טקסט על הכפתור
 
         // בעת לחיצה על הכפתור, מעבר לדף עם פרמטר השם
         button.onclick = () => {
@@ -32,7 +32,19 @@ const createButtons = (computers) => {
         container.appendChild(button); // הוספת הכפתור לקונטיינר
     });
 
-    document.body.appendChild(container); // הוספת הקונטיינר לעמוד
+    // יצירת כפתור לדף השגיאות
+    const errorButton = document.createElement('button');
+    errorButton.classList.add("errorButton");
+    errorButton.innerText = "Errors Page"; // טקסט על הכפתור
+    errorButton.onclick = () => {
+        window.location.href = "erorrsPage.html"; // מעבר לדף השגיאות
+    };
+    errorButton.classList.add("my-button"); // הוספת מחלקה לכפתור
+    container.appendChild(errorButton); // הוספת הכפתור לקונטיינר
+
+    document.body.appendChild(DevicesList); // הוספת DevicesList קודם
+    document.body.appendChild(container);   // הוספת הקונטיינר אחריו
+
 };
 
 // פונקציה היוצרת את הכותרת וההסבר בראש הדף
@@ -42,12 +54,7 @@ const createHeader = () => {
 
     const title = document.createElement('h1');
     title.innerText = "Welcome Soldier"; // כותרת ראשית
-
-    const description = document.createElement('p');
-    description.innerText = "Click on a client's button to view their profile."; // הסבר קצר
-
     header.appendChild(title);
-    header.appendChild(description);
     document.body.appendChild(header); // הוספת הכותרת לדף
 };
 
@@ -66,6 +73,8 @@ async function fetchFollowingsData() {
         console.error("Error fetching data:", error);
     }
 }
+
+
 
 // יצירת כותרת והסבר לפני טעינת הכפתורים
 createHeader();

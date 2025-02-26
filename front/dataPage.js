@@ -13,16 +13,19 @@ const date = getQueryParam("date");
 // כתובת השרת
 const url = 'http://127.0.0.1:5000'
 
-// פונקציה להצגת הנתונים בדף    
+// פונקציה להצגת הנתונים בדף
 const displayData = (data) => {
+
+// יצירת כותרת ראשית מעל הקונטיינר
+    const mainTitle = document.createElement('h2');
+    mainTitle.innerText = `The data of ${computer} on ${date}`;
+    mainTitle.classList.add("main-title");
+    document.body.appendChild(mainTitle);
+
     // יצירת קונטיינר ראשי לכל הנתונים
     const container = document.createElement('div');
     container.classList.add("container");
 
-    // יצירת כותרת
-    const title = document.createElement('h1');
-    title.innerText = `Data for ${computer} on ${date}`;
-    container.appendChild(title);
 
     // יצירת טבלה
     const table = document.createElement('table');
@@ -33,8 +36,8 @@ const displayData = (data) => {
     const th1 = document.createElement('th');
     const th2 = document.createElement('th');
 
-    th1.innerText = "Time";
-    th2.innerText = "Keystrokes";
+    th1.innerText = "Hour";
+    th2.innerText = "Contents";
 
     tr1.appendChild(th1);
     tr1.appendChild(th2);
@@ -49,7 +52,7 @@ const displayData = (data) => {
     Object.keys(data).forEach(time => {
         const tr = document.createElement('tr');
         const td1 = document.createElement('td');
-        const td2 = document.createElement('td'); 
+        const td2 = document.createElement('td');
 
         td1.innerText = time;
         td2.innerText = data[time];
@@ -77,6 +80,7 @@ async function fetchData() {
         console.error("Error fetching data:", error);
     }
 }
+
 fetchData(); // קריאה לפונקציה לקבלת הנתונים מהשרת
 
 

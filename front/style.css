@@ -22,7 +22,7 @@ body {
 
 /* עיצוב הכותרת הראשית */
 .header h1 {
-    font-size: 3em;
+    font-size: 4em;
     margin: 0;
 }
 
@@ -31,21 +31,52 @@ body {
     font-size: 1.5em;
     margin-top: 5px;
 }
+.errorButton {
+    width: 100%;
+    flex: wrap;
 
+}
 /* קונטיינר שמכיל את הכפתורים */
 .container {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 15px; /* שומר על הרווחים בין הכפתורים */
     justify-content: center;
-    /* max-width: 80%; */
-    min-width: 70%;
-    min-height: 60%;
+    width: 80%;
+    height: 400px; /* גובה קבוע למסגרת */
+    min-height: 300px;
     padding: 20px;
     background: rgba(255, 255, 255, 0.2);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(10px);
+    overflow-y: auto; /* גלילה תופיע אם הכפתורים לא נכנסים */
+}
+
+.DevicesList {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 83%;
+    min-height: 30px;
+    padding: 3px 0; /* מסיר רווחים פנימיים */
+    margin:5px 0; /* מסיר רווחים חיצוניים */
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    height: fit-content; /* המסגרת תהיה בדיוק בגובה הכותרת */
+    overflow-y: hidden;
+}
+
+/* מצמצם את הרווחים של הכותרת עצמה */
+.DevicesList h2 {
+    color: black;
+    margin: 2px 0;
+    margin-bottom: 0;
+    padding: 2px 0;
+    font-size: 1.5em;
+    text-align: center;
+    line-height: 1.1; /* מקטין את גובה השורה למינימום */
 }
 
 /* עיצוב טבלת נתונים */
@@ -61,20 +92,49 @@ body {
     backdrop-filter: blur(10px);
 }
 
+.main-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #40e0d0;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
 .data-table thead {
     background: rgba(0, 123, 255, 0.8);
     color: white;
-    font-size: 18px;
-    text-transform: uppercase;
+    font-size: 20px;
 }
 
-.data-table th, .data-table td {
-    max-width: 20px;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
+/* שינוי צבע הרקע של הכותרת בטבלה */
+.data-table th {
+    background-color: #31b6a8; /* רקע טורקיז בהיר */
+    color: white; /* טקסט בצבע לבן */
+    font-weight: bold;
     padding: 12px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* שינוי צבע הרקע של התאים בטבלה */
+.data-table td {
+    background-color: #d3d3d3; /* רקע טורקיז בהיר */
+    color: black; /* טקסט בצבע לבן */
+    padding: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    overflow-y:auto;
+    max-width: 50px; /* מגביל את רוחב התא */
+    min-width: 30px; /* רוחב מינימלי לפני שהוא מתכווץ */
+    height: 15px;
+}
+
+
+/* כל עמודה תהיה ברוחב מוגבל */
+.data-table th, .data-table td {
+    width: 50%; /* כל עמודה תקבל 50% מהרוחב של הטבלה */
+    max-width:50px;/* מגבלת רוחב מרבית */
+    overflow-y: auto;
+    height: 100px;
+    text-align: center; /* ממרכז את התוכן */
 }
 
 .data-table tbody tr {
