@@ -5,8 +5,9 @@ flask_cors
 dotenv
 requests
 keyboard
+getmac
 
-pip install flask flask-cors python-dotenv requests keyboard
+pip install flask flask-cors python-dotenv requests keyboard getmac
 
 
 
@@ -26,8 +27,6 @@ server requests: - בקשות שרת
 
     DECRYPTION_KEY = "" - מפתח ההצפנה לצורך פענוח, חובה
     BASE_DIR = "" - optional (else: "data") - נתיב לתיקיית הבסיס ששם מאוחסן המידע שנאסף
-    COMPUTERS_FILE = "" - optional (else: "computers_names.json") - נתיב לקובץ המכיל את שמות משתמשי המחשבים שבמעקב
-    USERS_DATA_FILE = "" - optional (else: "users_data.json") - נתיב לקובץ המכיל את שמות המשתמשים שמורשים להשתמש בתוכנה
 
 
 

@@ -2,24 +2,24 @@ from abc import ABC, abstractmethod
 
 
 class IKeyLoggerService(ABC):
-    """ ממשק למחלקת הקלטת מקשים """
+    """Interface for the key logging class."""
 
-    """" פונקציה פרטית שתפעל בהקשה על מקש """
     @abstractmethod
     def _on_event(self, event):
+        """Private function that will be triggered on key press."""
         pass
 
-    """"" פונקציה להתחלת הקלטה"""
     @abstractmethod
     def start_logging(self):
+        """Function to start logging."""
         pass
 
-    """" פונקציה לסיום הקלטה"""
     @abstractmethod
     def stop_logging(self):
+        """Function to stop logging."""
         pass
 
-    """" פונקציה לקבלת המקשים שנלחצו"""
     @abstractmethod
     def get_logged_keys(self) -> list:
+        """Function to get the pressed keys."""
         pass

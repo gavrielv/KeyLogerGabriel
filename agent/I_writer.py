@@ -3,11 +3,11 @@ from abc import abstractmethod, ABC
 
 class IWriter(ABC):
     """
-    תבנית למחלקה המיועדת לכתיבת/שליחת נתונים
-    בוריאציות שונות, לפי המימוש
+    Interface for a class that writes/sends data
+    in different variations, depending on the implementation.
     """
 
     @abstractmethod
     def send_data(self, data, machine_name: str) -> None:
-        """כתיבת/שליחת הנתונים"""
+        """Write/send the data."""
         pass
