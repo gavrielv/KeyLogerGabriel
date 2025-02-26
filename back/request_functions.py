@@ -15,7 +15,7 @@ class RequestFunctions:
         Initialize an instance for managing user names and passwords,
         Set paths for basic data files, and set the decryption key.
         """
-        self.computers_names = ComputersNames(os.path.join(base_dir_path, 'computer_names.json'))
+        self.computers_names = ComputersNames(os.path.join(base_dir_path, 'computers_names.json'))
         self.users_data = UsersData(os.path.join(base_dir_path, 'users_data.json'))
         self.all_data_path = os.path.join(base_dir_path, 'data')
         self.loger_data_path = os.path.join(base_dir_path, 'data', 'key_loger_data')

