@@ -3,38 +3,42 @@ import json
 
 
 class UsersData:
-    """ניהול וגישה למאגר שמות המשתמשים וסיסמאותיהם"""
+    """Managing and accessing the user names and their passwords"""
 
     def __init__(self, users_file_path):
         self.users_file_path = users_file_path
         try:
             if path.exists(users_file_path):
-                with open(users_file_path, 'r') as file:
+                with open(users_file_path, 'r', encoding='utf-8') as file:
                     self.users = json.load(file)
             else:
                 self.users = {}
         except Exception as e:
-            self.users = {'Error': f'Error reading file: {e}'}
+            self.users = {'Error': f'Error reading file: {str(e)}'}
 
     def check_user(self, user, password) -> bool:
-        """מחזירה אם שם המשתמש והסיסמה קיימים ותואמים"""
+        """Validates the username and password against the database"""
         return self.users.get(user) == password
 
     def add(self, user, password):
-        """הוספת מחשב חדש למאגר, מחזירה האם השמירה לקובץ הצליחה"""
-        pass
+        """Adds a user to the database, returns the status of the addition"""
+        if user in self.users:
+            return {'Error': 'User already exists'}
+        self.users[user] = password
+        return self._save()
 
     def delete(self, user, password):
-        """מחיקת מחשב מהמאגר, מחזירה האם השמירה לקובץ הצליחה"""
-        is_changed = False
-        pass
+        """Removes a user from the database, returns the status of the deletion"""
+        if user not in self.users:
+            return {'Error': 'User not found'}
+        del self.users[user]
+        return self._save()
 
-    # TODO fix except
-    def _save(self) -> bool:
-        """שמירת השינויים לקובץ"""
+    def _save(self) -> dict:
+        """Saves changes to the file, returns the status of the save"""
         try:
             with open(self.users_file_path, 'w', encoding='utf-8') as file:
-                file.write(json.dumps(self.users, ensure_ascii=False))
-                return True
+                file.write(json.dumps(self.users, ensure_ascii=False, indent=4))
+                return {'Status': "Saving successfully"}
         except Exception as e:
-            return False
+            return {'Error': f'Error writing file: {str(e)}'}

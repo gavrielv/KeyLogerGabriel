@@ -2,11 +2,9 @@ from abc import ABC, abstractmethod
 
 
 class IEncryptor(ABC):
-    """תבנית למחלקה המצפינה נתונים"""
+    """Interface for the data encryption class."""
 
     @abstractmethod
     def encrypt(self, data, key: str | int):
-        """הצפנת הנתונים"""
+        """Encrypt the data."""
         pass
-
-# הושלם

