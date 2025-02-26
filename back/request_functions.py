@@ -12,14 +12,14 @@ class RequestFunctions:
     def __init__(self, base_dir_path: str, decryption_key: str | int):
         """
         Initialize an instance for managing computer names being tracked,
-        Initialize an instance for managing user names and passwords,
+        Initialize an instance for managing users names and passwords,
         Set paths for basic data files, and set the decryption key.
         """
         self.computers_names = ComputersNames(os.path.join(base_dir_path, 'computers_names.json'))
         self.users_data = UsersData(os.path.join(base_dir_path, 'users_data.json'))
         self.all_data_path = os.path.join(base_dir_path, 'data')
         self.loger_data_path = os.path.join(base_dir_path, 'data', 'key_loger_data')
-        self.errors_data_path = os.path.join(base_dir_path, 'errors_data.txt')
+        self.errors_data_path = os.path.join(base_dir_path, 'data', 'errors_data.txt')
         self.decryption_key = decryption_key
 
     # POST requests
@@ -128,7 +128,6 @@ class RequestFunctions:
         return result
 
     def get_error_file(self):
-        os.makedirs(self.errors_data_path, exist_ok=True)
         result = {}
         with open(self.errors_data_path, 'r', encoding='utf-8') as file:
             for line in file:
