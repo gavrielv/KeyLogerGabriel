@@ -115,7 +115,7 @@ class RequestFunctions:
 
     def get_keystrokes_by_name_and_date(self, name, date):
         """Get keystroke data for a specific computer on a specific day"""
-        data_path = os.path.join(self.loger_data_path, name, date)
+        data_path = os.path.join(self.loger_data_path, name, f'{date}.txt')
         if not os.path.exists(data_path):
             return {'Error': f'File {date} for {name} not found'}
         result = {}
