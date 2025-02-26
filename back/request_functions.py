@@ -86,7 +86,6 @@ class RequestFunctions:
             return {'Status': 'Confirm'}
         return {'Failed': 'Not confirmed'}
 
-    # TODO check computer name, can be None
     def send_error(self):
         """Send error type in case of an error on the monitored computer"""
         error_data = request.data.decode("utf-8").strip()
@@ -130,10 +129,10 @@ class RequestFunctions:
     def get_error_file(self):
         result = {}
         with open(self.errors_data_path, 'r', encoding='utf-8') as file:
-            for line in file:
+            for number, line in enumerate(file):
                 data = json.loads(line.strip())
                 mac, time, error_data = data.get('mac'), data.get('time'), data.get('error_data'),
-                result[mac] = {'time': time, 'error_data': error_data}
+                result[number] = {'mac': mac, 'time': time, 'error_data': error_data}
         return result
 
     @staticmethod

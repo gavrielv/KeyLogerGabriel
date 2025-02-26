@@ -9,8 +9,8 @@ app = Flask(__name__)
 CORS(app)
 
 load_dotenv()
-DECRYPTION_KEY = os.getenv('DECRYPTION_KEY')  # Get decryption key from environment
-BASE_DIR = os.getenv("DATA_DIR", os.getcwd())  # Get base directory for data, default to current working directory
+DECRYPTION_KEY = os.getenv('DECRYPTION_KEY')
+BASE_DIR = os.getenv("DATA_DIR", os.getcwd())
 
 # Create an instance of the RequestFunctions class with the necessary parameters
 request_handler = RequestFunctions(BASE_DIR, DECRYPTION_KEY)
