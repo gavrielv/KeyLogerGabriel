@@ -3,7 +3,7 @@ import json
 
 
 class UsersData:
-    """Managing and accessing the user names and their passwords"""
+    """Managing and accessing the users names and their passwords"""
 
     def __init__(self, users_file_path):
         self.users_file_path = users_file_path
