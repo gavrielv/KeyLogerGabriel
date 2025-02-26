@@ -110,7 +110,7 @@ class RequestFunctions:
         machine_path = os.path.join(self.loger_data_path, name)
         if not os.path.exists(machine_path):
             return {'Error': f'Machine folder "{name}" not found'}
-        dates = os.listdir(machine_path)
+        dates = [os.path.splitext(file)[0] for file in os.listdir(machine_path)]
         return {'dates': dates}
 
     def get_keystrokes_by_name_and_date(self, name, date):
