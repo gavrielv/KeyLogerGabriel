@@ -2,20 +2,22 @@ const url = 'http://127.0.0.1:5000';
 
 // result[mac] = {'time': time, 'error_data': error_data}
 
-const button = document.createElement("button");
-button.textContent = "חזרה לדף הבית";
-button.style.padding = "10px 20px";
-button.style.fontSize = "16px";
-button.style.cursor = "pointer";
+// פונקציה ליצירת כפתור חזרה לדף הבית
+const createHomeButton = () => {
+    const button = document.createElement("button");
+    button.textContent = "חזרה לדף הבית";
+    button.style.padding = "10px 20px";
+    button.style.fontSize = "16px";
+    button.style.cursor = "pointer";
 
-document.body.appendChild(button);
+    document.body.appendChild(button);
 
-// הוספת אירוע לחיצה
-button.addEventListener("click", () => {
-    window.location.href = "homePage.html";
-});
+    // הוספת אירוע לחיצה
+    button.addEventListener("click", () => {
+        window.location.href = "homePage.html";
+    });
 
-
+}
 
 
 // פונקציה להצגת הנתונים בדף    
@@ -41,7 +43,7 @@ const displayData = (data) => {
     const th2 = document.createElement('th');
     const th3 = document.createElement('th');
 
-    th1.innerText = "masin NAC";
+    th1.innerText = "MAC Address";
     th2.innerText = "Time";
     th3.innerText = "error text";
 
@@ -60,10 +62,11 @@ const displayData = (data) => {
         const tr = document.createElement('tr');
         const td1 = document.createElement('td');
         const td2 = document.createElement('td'); 
+        const td3 = document.createElement('td');
 
         td1.innerText = data[lineNum].mac;
         td2.innerText = data[lineNum].time;
-        td3.innerText = data[lineNum].error
+        td3.innerText = data[lineNum].error_data;
 
         tr.appendChild(td1);
         tr.appendChild(td2);
@@ -86,7 +89,7 @@ async function fetchFollowingsData() {
         if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
         const followings = await response.json(); // המרת התגובה לאובייקט JSON
         console.log(followings);
-        displayData(followings.machines); // יצירת כפתורים עם הנתונים שהתקבלו
+        displayData(followings); // יצירת כפתורים עם הנתונים שהתקבלו
     } catch (error) {
         console.error("Error fetching data:", error);
     }
@@ -96,5 +99,5 @@ async function fetchFollowingsData() {
 
 
 
-
-// fetchFollowingsData();
+createHomeButton();
+fetchFollowingsData();
