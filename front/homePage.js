@@ -1,5 +1,3 @@
-// רשימת הלקוחות
-// const clients = ['avi','ben','david','daniel','eli','guy','gadi','haim','idan','jacob','liran','moran','nir','omer','ron','shay','tal','uri','yosi','ziv'];
 
 
 const url = 'http://127.0.0.1:5000'
@@ -34,7 +32,7 @@ const createHeader = () => {
     header.classList.add("header");
 
     const title = document.createElement('h1');
-    title.innerText = "Welcome to the Client Portal"; // כותרת ראשית
+    title.innerText = "Welcome Soldier"; // כותרת ראשית
 
     const description = document.createElement('p');
     description.innerText = "Click on a client's button to view their profile."; // הסבר קצר
