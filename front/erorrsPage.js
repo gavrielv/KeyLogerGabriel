@@ -65,7 +65,7 @@ const displayData = (data) => {
 // פונקציה ליצירת כפתור חזרה לדף הבית עם העיצוב הקיים של הכפתורים
 const createHomeButton = () => {
     const homeButton = document.createElement("button");
-    homeButton.textContent = "חזרה לדף הבית";
+    homeButton.textContent = "Home page";
     homeButton.classList.add("my-button", "home-button"); // הוספת מחלקה לעיצוב
 
     // הוספת אירוע לחיצה שמעביר לדף הבית

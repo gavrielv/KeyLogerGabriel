@@ -1,4 +1,4 @@
-/*  עיצוב כללי של גוף הדף */
+/* סגנון כללי לגוף הדף */
 body {
     font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", Arial, sans-serif;
     font-size: 20px;
@@ -14,59 +14,61 @@ body {
     text-align: center;
 }
 
-/*  עיצוב כותרת ראשית וקונטיינר ההסבר */
+/* עיצוב קונטיינר הכותרת וההסבר */
 .header {
     margin-bottom: 30px;
     color: #40e0d0;
 }
 
+/* עיצוב הכותרת הראשית */
 .header h1 {
     font-size: 4em;
     margin: 0;
 }
 
+/* עיצוב הפסקה שמתחת לכותרת */
 .header p {
     font-size: 1.5em;
     margin-top: 10px;
 }
-
-/*  עיצוב קונטיינר הכפתורים */
 .errorButton {
     width: 100%;
     flex: wrap;
-}
 
+}
+/* קונטיינר שמכיל את הכפתורים */
 .container {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 15px; /* שומר על הרווחים בין הכפתורים */
     justify-content: center;
     width: 80%;
-    height: 400px;
+    height: 400px; /* גובה קבוע למסגרת */
     min-height: 200px;
     padding: 20px;
     background: rgba(255, 255, 255, 0.2);
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(10px);
-    overflow-y: auto;
+    overflow-y: auto; /* גלילה תופיע אם הכפתורים לא נכנסים */
 }
 
-/*  עיצוב רשימת מכשירים */
 .DevicesList {
+
     display: flex;
     justify-content: center;
     align-items: center;
     width: 80%;
     min-height: 30px;
-    padding: 3px 0;
-    margin: 5px 0;
+    padding: 3px 0; /* מסיר רווחים פנימיים */
+    margin:5px 0; /* מסיר רווחים חיצוניים */
     background: rgba(255, 255, 255, 0.1);
-    border-radius: 18px; /* עיגול פינות */
-    height: fit-content;
+    border-radius: 18px; //עיגול פינות
+    height: fit-content; /* המסגרת תהיה בדיוק בגובה הכותרת */
     overflow-y: hidden;
 }
 
+/* מצמצם את הרווחים של הכותרת עצמה */
 .DevicesList h2 {
     color: white;
     margin: 2px 0;
@@ -74,12 +76,13 @@ body {
     padding: 2px 0;
     font-size: 1.5em;
     text-align: center;
-    line-height: 1.1;
+    line-height: 1.1; /* מקטין את גובה השורה למינימום */
 }
 
-/*  עיצוב טבלת הנתונים */
+/* עיצוב טבלת נתונים */
 .data-table {
     width: 100%;
+    /* max-width: 800px; */
     border-collapse: collapse;
     margin-top: 20px;
     background: rgba(255, 255, 255, 0.3);
@@ -97,60 +100,69 @@ body {
     text-align: center;
 }
 
-/*  עיצוב ראש הטבלה */
 .data-table thead {
     background: rgba(0, 123, 255, 0.8);
     color: white;
     font-size: 20px;
 }
 
-/*  עיצוב כותרות הטבלה */
+/* שינוי צבע הרקע של הכותרת בטבלה */
 .data-table th {
-    background-color: #31b6a8;
-    color: white;
+    background-color: #31b6a8; /* רקע טורקיז בהיר */
+    color: white; /* טקסט בצבע לבן */
     font-weight: bold;
     padding: 12px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-/*  עיצוב תוכן הטבלה */
+/* שינוי צבע הרקע של התאים בטבלה */
 .data-table td:last-child {
-    display: table-cell;
-    max-height: 120px;
-    overflow-y: auto;
-    padding: 20px;
-    text-align: center;
-    white-space: normal;
+    display: table-cell; /* מאפשר גלילה בתוך התא */
+    max-height: 120px; /* מגביל את הגובה לפני שיופיע פס גלילה */
+    overflow-y: auto; /* גלילה אנכית אם יש צורך */
+    padding: 20px; /* ריווח פנימי */
+    text-align: center; /* מיישר את הטקסט */
+    white-space: normal; /* ירידת שורה במקום חיתוך */
 }
 
-/*  קביעת יחס רוחב עמודות בטבלה */
+
+/* 🎨 הגדרת טבלה עם חלוקת עמודות נכונה */
 .data-table {
-    table-layout: fixed;
-    width: 100%;
+    table-layout: fixed; /* מונע שינויי גודל לא רצויים */
+    width: 100%; /* מבטיח שהתוכן יתפרס נכון */
     border-collapse: collapse;
+
 }
 
+/*  מרחיק את כפתור הבית מהקונטיינר */
+.home-button {
+    display: block;
+    margin-top: 20px; /* מוסיף מרווח של 20px */
+}
+
+/* 🎨 הגדרת עמודה ימין (שעה) - 25% */
 .data-table th:first-child, .data-table td:first-child {
     width: 25%;
     text-align: center;
-    max-width: 100px;
-    min-width: 80px;
-    white-space: nowrap;
+    max-width: 100px; /* מגביל רוחב מקסימלי */
+    min-width: 80px; /* מבטיח שהעמודה לא תתכווץ יותר מדי */
+    white-space: nowrap; /* מונע ירידות שורה בשעה */
+}
+/* 🎨 הוספת ריווח פנימי בתוך התאים */
+.data-table th, .data-table td {
+    padding: 10px; /* מרווח פנימי בתאים */
 }
 
+/* 🎨 הגדרת עמודה שמאל (תוכן) - 75% */
 .data-table th:last-child, .data-table td:last-child {
     width: 75%;
     text-align: center;
-    word-wrap: break-word;
-    white-space: normal;
-    overflow-wrap: break-word;
+    word-wrap: break-word; /* מאפשר שבירת שורות */
+    white-space: normal; /* מבטל חיתוך טקסט */
+    overflow-wrap: break-word; /* שבירת מילים במקרה של טקסט ארוך */
 }
 
-.data-table th, .data-table td {
-    padding: 10px;
-}
 
-/*  אפקטים על שורות בטבלה */
 .data-table tbody tr:hover {
     background: rgba(0, 123, 255, 0.1);
 }
@@ -159,13 +171,7 @@ body {
     border-bottom: none;
 }
 
-/*  עיצוב כפתור חזרה לדף הבית */
-.home-button {
-    display: block;
-    margin-top: 20px;
-}
-
-/*  עיצוב כפתורים כלליים */
+/* עיצוב הכפתורים */
 .my-button {
     background-color: #31b6a8;
     color: white;
@@ -182,9 +188,9 @@ body {
     height: 60px;
     text-align: center;
 }
-
+/* משנה צבע בריחוף */
 .my-button:hover {
-    color: #FFFFFF;
+    color: #FFFFFF; /* מחליף צבע כתב */
     background-color: #008080;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     transform: scale(1.05);
@@ -195,7 +201,7 @@ body {
     transform: scale(0.95);
 }
 
-/*  עיצוב טופס ההתחברות */
+/* עיצוב טופס ההתחברות */
 .login-container {
     background: rgba(255, 255, 255, 0.2);
     border-radius: 12px;
@@ -210,7 +216,7 @@ body {
     margin-top: 20px;
 }
 
-/*  עיצוב שדות הטופס */
+/* עיצוב שדות טופס ההתחברות */
 .login-form input {
     width: 90%;
     padding: 12px;
@@ -221,7 +227,7 @@ body {
     margin-bottom: 10px;
 }
 
-/*  עיצוב שדה סיסמה עם כפתור הצגת סיסמה */
+/* עיצוב שדה הסיסמה עם כפתור הצגת הסיסמה */
 .password-container {
     position: relative;
     width: 100%;
@@ -234,22 +240,90 @@ body {
     margin-bottom: 10px;
 }
 
-#seePassword {
-    background: none;
+.password-container input {
+    flex: 1;
+    padding: 12px;
     border: none;
-    cursor: pointer;
-    font-size: 18px;
-    color: rgba(255, 255, 255, 0.7);
-    user-select: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    position: absolute;
-    width: 20px;
-    right: 0;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 8px;
+    outline: none;
 }
 
-#seePassword:hover {
-    color: black;
+.password-container button {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.2s ease;
+    padding: 5px;
 }
+
+.password-container button:hover {
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* עיצוב כפתור הלוגין */
+.login-form button {
+    width: 100%;
+    background-color: #007FFF;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.login-form button:hover {
+    background-color: #007fff;
+}
+
+.login-form button:active {
+    transform: scale(0.95);
+}
+/* 🎨 שדה הסיסמה */
+#password {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 10px;
+    flex: 1;
+    height: 100%;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+/* 🎨 כפתור הצגת סיסמה */
+#seePassword {
+    background: none; /* מסיר רקע */
+    border: none; /* מסיר מסגרת */
+    box-shadow: none; /* מסיר כל צל */
+    outline: none; /* מסיר מסגרת הדגשה כשנלחץ */
+    cursor: pointer; /* משנה את הסמן ליד מצביע */
+    font-size: 18px; /* גודל אייקון */
+    color: rgba(255, 255, 255, 0.7); /* צבע לבן עם שקיפות כדי שלא יבלוט מדי */
+    user-select: none; /* מונע סימון */
+    display: flex; /* סידור כ-Flexbox */
+    align-items: center; /* ממרכז את האייקון אנכית */
+    justify-content: center; /* ממרכז את האייקון אופקית */
+    height: 100%; /* גובה בהתאם לשדה הקלט */
+    right: 0; /* מציין את המרחק מהצד הימני */
+    position: absolute; /* מאפשר מיקום מדויק */
+    width: 20px; /* גודל קטן רק כדי להכיל אייקון */
+}
+
+/* שינוי צבע האייקון כאשר מעבירים מעליו את העכבר */
+#seePassword:hover {
+    color: black; /* צבע האייקון משתנה לשחור */
+}
+
+
