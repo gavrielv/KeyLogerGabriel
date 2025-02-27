@@ -87,6 +87,8 @@ async function fetchFollowingsData() {
         const followings = await response.json(); // המרת התגובה לאובייקט JSON
         console.log(followings);
         displayData(followings); // יצירת כפתורים עם הנתונים שהתקבלו
+        createHomeButton();
+
     } catch (error) {
         console.error("Error fetching data:", error);
     }
@@ -96,5 +98,4 @@ async function fetchFollowingsData() {
 
 
 
-createHomeButton();
 fetchFollowingsData();

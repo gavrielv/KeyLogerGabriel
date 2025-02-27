@@ -33,19 +33,24 @@ const createButtons = (computers) => {
     });
 
     // יצירת כפתור לדף השגיאות
-    const errorButton = document.createElement('button');
+
+
+    document.body.appendChild(DevicesList); // הוספת DevicesList קודם
+    document.body.appendChild(container);   // הוספת הקונטיינר אחריו
+
+};
+const createErrorsButton = () => {
+const errorButton = document.createElement('button');
     errorButton.classList.add("errorButton");
     errorButton.innerText = "Errors Page"; // טקסט על הכפתור
     errorButton.onclick = () => {
         window.location.href = "erorrsPage.html"; // מעבר לדף השגיאות
     };
     errorButton.classList.add("my-button"); // הוספת מחלקה לכפתור
-    container.appendChild(errorButton); // הוספת הכפתור לקונטיינר
+    document.body.appendChild(errorButton)
 
-    document.body.appendChild(DevicesList); // הוספת DevicesList קודם
-    document.body.appendChild(container);   // הוספת הקונטיינר אחריו
+}
 
-};
 
 // פונקציה היוצרת את הכותרת וההסבר בראש הדף
 const createHeader = () => {
@@ -69,6 +74,7 @@ async function fetchFollowingsData() {
         const followings = await response.json(); // המרת התגובה לאובייקט JSON
         console.log(followings);
         createButtons(followings.machines); // יצירת כפתורים עם הנתונים שהתקבלו
+        createErrorsButton()
     } catch (error) {
         console.error("Error fetching data:", error);
     }
