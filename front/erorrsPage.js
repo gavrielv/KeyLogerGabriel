@@ -2,23 +2,6 @@ const url = 'http://127.0.0.1:5000';
 
 // result[mac] = {'time': time, 'error_data': error_data}
 
-// פונקציה ליצירת כפתור חזרה לדף הבית
-const createHomeButton = () => {
-    const button = document.createElement("button");
-    button.textContent = "חזרה לדף הבית";
-    button.style.padding = "10px 20px";
-    button.style.fontSize = "16px";
-    button.style.cursor = "pointer";
-
-    document.body.appendChild(button);
-
-    // הוספת אירוע לחיצה
-    button.addEventListener("click", () => {
-        window.location.href = "homePage.html";
-    });
-
-}
-
 
 // פונקציה להצגת הנתונים בדף    
 const displayData = (data) => {
@@ -28,7 +11,7 @@ const displayData = (data) => {
 
     // יצירת כותרת
     const title = document.createElement('h1');
-    title.innerText = `???????????????????????`;
+    title.innerText = `Errors by mac address`;
     container.appendChild(title);
 
     // יצירת טבלה
@@ -79,6 +62,20 @@ const displayData = (data) => {
 
     }
 
+// פונקציה ליצירת כפתור חזרה לדף הבית עם העיצוב הקיים של הכפתורים
+const createHomeButton = () => {
+    const homeButton = document.createElement("button");
+    homeButton.textContent = "חזרה לדף הבית";
+    homeButton.classList.add("my-button", "home-button"); // הוספת מחלקה לעיצוב
+
+    // הוספת אירוע לחיצה שמעביר לדף הבית
+    homeButton.addEventListener("click", () => {
+        window.location.href = "homePage.html";
+    });
+
+    // הוספת הכפתור לדף
+    document.body.appendChild(homeButton);
+};
 
 async function fetchFollowingsData() {
     console.log("Fetching data..."); // הדפסת הודעה לקונסול

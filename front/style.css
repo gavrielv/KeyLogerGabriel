@@ -29,7 +29,7 @@ body {
 /* עיצוב הפסקה שמתחת לכותרת */
 .header p {
     font-size: 1.5em;
-    margin-top: 5px;
+    margin-top: 10px;
 }
 .errorButton {
     width: 100%;
@@ -44,10 +44,10 @@ body {
     justify-content: center;
     width: 80%;
     height: 400px; /* גובה קבוע למסגרת */
-    min-height: 300px;
+    min-height: 200px;
     padding: 20px;
     background: rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
+    border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(10px);
     overflow-y: auto; /* גלילה תופיע אם הכפתורים לא נכנסים */
@@ -58,19 +58,19 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 83%;
+    width: 80%;
     min-height: 30px;
     padding: 3px 0; /* מסיר רווחים פנימיים */
     margin:5px 0; /* מסיר רווחים חיצוניים */
     background: rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
+    border-radius: 18px; //עיגול פינות
     height: fit-content; /* המסגרת תהיה בדיוק בגובה הכותרת */
     overflow-y: hidden;
 }
 
 /* מצמצם את הרווחים של הכותרת עצמה */
 .DevicesList h2 {
-    color: black;
+    color: white;
     margin: 2px 0;
     margin-bottom: 0;
     padding: 2px 0;
@@ -116,30 +116,52 @@ body {
 }
 
 /* שינוי צבע הרקע של התאים בטבלה */
-.data-table td {
-    background-color: #d3d3d3; /* רקע טורקיז בהיר */
-    color: black; /* טקסט בצבע לבן */
-    padding: 12px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-    overflow-y:auto;
-    max-width: 50px; /* מגביל את רוחב התא */
-    min-width: 30px; /* רוחב מינימלי לפני שהוא מתכווץ */
-    height: 15px;
+.data-table td:last-child {
+    display: table-cell; /* מאפשר גלילה בתוך התא */
+    max-height: 120px; /* מגביל את הגובה לפני שיופיע פס גלילה */
+    overflow-y: auto; /* גלילה אנכית אם יש צורך */
+    padding: 20px; /* ריווח פנימי */
+    text-align: center; /* מיישר את הטקסט */
+    white-space: normal; /* ירידת שורה במקום חיתוך */
 }
 
 
-/* כל עמודה תהיה ברוחב מוגבל */
+/* 🎨 הגדרת טבלה עם חלוקת עמודות נכונה */
+.data-table {
+    table-layout: fixed; /* מונע שינויי גודל לא רצויים */
+    width: 100%; /* מבטיח שהתוכן יתפרס נכון */
+    border-collapse: collapse;
+
+}
+
+/*  מרחיק את כפתור הבית מהקונטיינר */
+.home-button {
+    display: block;
+    margin-top: 20px; /* מוסיף מרווח של 20px */
+}
+
+/* 🎨 הגדרת עמודה ימין (שעה) - 25% */
+.data-table th:first-child, .data-table td:first-child {
+    width: 25%;
+    text-align: center;
+    max-width: 100px; /* מגביל רוחב מקסימלי */
+    min-width: 80px; /* מבטיח שהעמודה לא תתכווץ יותר מדי */
+    white-space: nowrap; /* מונע ירידות שורה בשעה */
+}
+/* 🎨 הוספת ריווח פנימי בתוך התאים */
 .data-table th, .data-table td {
-    width: 50%; /* כל עמודה תקבל 50% מהרוחב של הטבלה */
-    max-width:50px;/* מגבלת רוחב מרבית */
-    overflow-y: auto;
-    height: 100px;
-    text-align: center; /* ממרכז את התוכן */
+    padding: 10px; /* מרווח פנימי בתאים */
 }
 
-.data-table tbody tr {
-    transition: background 0.3s ease;
+/* 🎨 הגדרת עמודה שמאל (תוכן) - 75% */
+.data-table th:last-child, .data-table td:last-child {
+    width: 75%;
+    text-align: center;
+    word-wrap: break-word; /* מאפשר שבירת שורות */
+    white-space: normal; /* מבטל חיתוך טקסט */
+    overflow-wrap: break-word; /* שבירת מילים במקרה של טקסט ארוך */
 }
+
 
 .data-table tbody tr:hover {
     background: rgba(0, 123, 255, 0.1);
@@ -155,7 +177,7 @@ body {
     color: white;
     border: none;
     padding: 12px 20px;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: bold;
     border-radius: 8px;
     cursor: pointer;
