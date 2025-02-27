@@ -14,7 +14,7 @@ class FileWriter(IWriter):
         """Write data to a {json} file with a timestamp."""
         if (data is None) or (not isinstance(data, str)):
             raise ValueError('The data was not received or is not of type string.')
-        current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        current_time = datetime.now().strftime('%Y.%m.%d %H:%M:%S')
         data_with_time = {current_time: data}
         json_data = json.dumps(data_with_time, ensure_ascii=False)
         try:
