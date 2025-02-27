@@ -64,7 +64,7 @@ async function fetchFollowingsData() {
 if (name1) {
     console.log("Name is:", name1);
     fetchFollowingsData();
-} else {    
+} else {
     document.body.innerHTML = `<h1>No user selected</h1>`;
 }
 

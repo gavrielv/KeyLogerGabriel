@@ -38,8 +38,8 @@ class RequestFunctions:
 
         # Validate time format
         try:
-            time_tamp = datetime.strptime(time, "%d-%m-%Y %H:%M:%S")
-            file_name = f'{time_tamp.strftime("%d-%m-%Y")}.txt'
+            time_tamp = datetime.strptime(time, "%d.%m.%Y %H:%M:%S")
+            file_name = f'{time_tamp.strftime("%d.%m.%Y")}.txt'
         except ValueError:
             return {'Error': 'Invalid time format'}
 
@@ -123,7 +123,7 @@ class RequestFunctions:
             for line in file:
                 data_dict = json.loads(line.strip())
                 for time, loger_data in data_dict.items():
-                    result[time] = self._xor_decryption(loger_data, self.decryption_key)
+                    result[time[-8:]] = self._xor_decryption(loger_data, self.decryption_key)
         return result
 
     def get_error_file(self):
