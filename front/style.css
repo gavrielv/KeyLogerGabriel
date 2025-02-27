@@ -95,7 +95,7 @@ body {
 .main-title {
     font-size: 1.5em;
     font-weight: bold;
-    color: #40e0d0;
+    color: #40e0d0 ;
     margin-bottom: 15px;
     text-align: center;
 }
@@ -197,12 +197,13 @@ body {
 }
 
 .my-button:active {
-    background-color: #00000;
+    background-color: white;
     transform: scale(0.95);
 }
 
 /* עיצוב טופס ההתחברות */
 .login-container {
+    color: white;
     background: rgba(255, 255, 255, 0.2);
     border-radius: 12px;
     padding: 30px;
@@ -271,7 +272,7 @@ body {
 /* עיצוב כפתור הלוגין */
 .login-form button {
     width: 100%;
-    background-color: #007FFF;
+    background-color: #31b6a8;
     color: white;
     border: none;
     padding: 12px 20px;
@@ -284,7 +285,7 @@ body {
 }
 
 .login-form button:hover {
-    background-color: #007fff;
+    background-color: #008080;
 }
 
 .login-form button:active {

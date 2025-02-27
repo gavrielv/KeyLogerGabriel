@@ -48,7 +48,7 @@ const displayData = (data) => {
         const td3 = document.createElement('td');
 
         td1.innerText = data[lineNum].mac;
-        td2.innerText = data[lineNum].time;
+        td2.innerHTML = data[lineNum].time.replace(" ", "<br>"); // מחליף רווח בירידת שורה
         td3.innerText = data[lineNum].error_data;
 
         tr.appendChild(td1);
