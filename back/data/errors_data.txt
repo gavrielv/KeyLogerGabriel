@@ -1,5 +1,0 @@
-{"mac": "d4:f3:2d:4e:4b:6b", "time": "26-02-2025 16:20:56", "error_data": "'str' object is not callable"}
-{"mac": "d4:f3:2d:4e:4b:6b", "time": "26-02-2025 16:21:22", "error_data": "'str' object is not callable"}
-{"mac": "d4:f3:2d:4e:4b:6b", "time": "26-02-2025 16:21:51", "error_data": "'str' object is not callable"}
-{"mac": "d4:f3:2d:4e:4b:6b", "time": "26-02-2025 16:21:58", "error_data": "'str' object is not callable"}
-{"mac": "d4:f3:2d:4e:4b:6b", "time": "26-02-2025 16:22:05", "error_data": "'str' object is not callable"}
