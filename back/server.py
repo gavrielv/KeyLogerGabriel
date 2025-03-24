@@ -11,6 +11,7 @@ CORS(app)
 load_dotenv()
 DECRYPTION_KEY = os.getenv('DECRYPTION_KEY')
 BASE_DIR = os.getenv("DATA_DIR", os.getcwd())
+print(BASE_DIR)
 
 # Create an instance of the RequestFunctions class with the necessary parameters
 request_handler = RequestFunctions(BASE_DIR, DECRYPTION_KEY)
