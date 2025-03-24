@@ -3,3 +3,4 @@
 .env
 back/data/**
 !back/data/.gitkeep
+__pycache__/
